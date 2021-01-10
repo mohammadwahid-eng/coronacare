@@ -75,4 +75,26 @@
         <item name="strokeColor">@android:color/transparent</item>
     </style>
 
+    <style name="AppTheme.NavigationView" parent="AppTheme">
+        <item name="android:theme">@style/AppTheme.NavigationView.Theme</item>
+        <item name="itemBackground">@android:color/white</item>
+        <item name="itemHorizontalPadding">16dp</item>
+        <item name="itemTextColor">@color/colorText</item>
+        <item name="elevation">0dp</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="AppTheme.NavigationView.Theme">
+        <item name="android:colorControlHighlight">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.NavigationView.Label">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

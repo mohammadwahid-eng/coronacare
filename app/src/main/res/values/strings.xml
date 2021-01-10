@@ -19,4 +19,17 @@
     <string name="tiredness">Tiredness</string>
     <string name="fever">Fever</string>
     <string name="rska_note">rska</string>
+    <string name="account">Account</string>
+    <string name="emergency">Emergency</string>
+    <string name="about">About</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="terms_and_conditions">Terms &amp; Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about_us">About Us</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_mobile_number">Change Mobile Number</string>
+    <string name="logout">Logout</string>
+    <string name="diagnostic_centers">Diagnostic Centers</string>
+    <string name="hotlines">Hotlines</string>
+    <string name="ambulance">Ambulance</string>
 </resources>

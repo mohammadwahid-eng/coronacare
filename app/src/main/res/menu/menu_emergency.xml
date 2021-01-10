@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnue_dc"
+        android:enabled="true"
+        android:title="@string/diagnostic_centers"/>
+    <item
+        android:id="@+id/mnue_hotlines"
+        android:enabled="true"
+        android:title="@string/hotlines"/>
+    <item
+        android:id="@+id/mnue_ambulance"
+        android:enabled="true"
+        android:title="@string/ambulance"/>
+</menu>

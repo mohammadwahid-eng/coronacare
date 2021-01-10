@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnua_faq"
+        android:enabled="true"
+        android:title="@string/frequently_asked_questions"/>
+    <item
+        android:id="@+id/mnua_terms"
+        android:enabled="true"
+        android:title="@string/terms_and_conditions"/>
+    <item
+        android:id="@+id/mnua_privacy"
+        android:enabled="true"
+        android:title="@string/privacy_policy"/>
+    <item
+        android:id="@+id/mnua_us"
+        android:enabled="true"
+        android:title="@string/about_us"/>
+</menu>
