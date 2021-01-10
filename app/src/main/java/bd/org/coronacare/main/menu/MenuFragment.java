@@ -18,6 +18,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import bd.org.coronacare.R;
 import bd.org.coronacare.about.AboutActivity;
 import bd.org.coronacare.emergency.EmergencyActivity;
+import bd.org.coronacare.profile.edit.EditProfileActivity;
 
 public class MenuFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -68,23 +69,23 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.mnue_profile) {
-            //startActivity(new Intent(getActivity(), ProfileEditActivity.class));
+            startActivity(new Intent(getActivity(), EditProfileActivity.class));
         } else if (item.getItemId() == R.id.mnue_mobile) {
             //startActivity(new Intent(getActivity(), ProfileMobileUpdateActivity.class));
         } else if (item.getItemId() == R.id.mnue_dc) {
-            getActivity().startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "DIAGNOSTIC_CENTER"));
+            startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "DIAGNOSTIC_CENTER"));
         } else if (item.getItemId() == R.id.mnue_hotlines) {
-            getActivity().startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "HOTLINES"));
+            startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "HOTLINES"));
         } else if (item.getItemId() == R.id.mnue_ambulance) {
-            getActivity().startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "AMBULANCE"));
+            startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "AMBULANCE"));
         } else if (item.getItemId() == R.id.mnua_faq) {
-            getActivity().startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "FAQ"));
+            startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "FAQ"));
         } else if (item.getItemId() == R.id.mnua_terms) {
-            getActivity().startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "TERMS"));
+            startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "TERMS"));
         } else if (item.getItemId() == R.id.mnua_privacy) {
-            getActivity().startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "PRIVACY"));
+            startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "PRIVACY"));
         } else if (item.getItemId() == R.id.mnua_us) {
-            getActivity().startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "ABOUT_US"));
+            startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "ABOUT_US"));
         } else if (item.getItemId() == R.id.mnu_logout) {
 //            mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(false);
 //            mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
