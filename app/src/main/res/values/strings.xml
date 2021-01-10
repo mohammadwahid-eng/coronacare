@@ -87,4 +87,5 @@
     <string name="risk_moderate">Risk level:\nModerate\n\nSuggestions:\nImmediately test COVID-19 from your nearby "COVID-19 Test Center" and follow corona prevention tips.</string>
     <string name="risk_severe">Risk level:\nSevere\n\nSuggestions:\nImmediately go to your nearby hospital, test COVID-19, Consult with doctors and follow prevention tips.</string>
     <string name="risk_none">Risk level:\nNone\n\nSuggestions:\nStay your home and follow corona prevention tips.</string>
+    <string name="save">Save</string>
 </resources>

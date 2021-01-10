@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import bd.org.coronacare.R;
-import bd.org.coronacare.utils.OptionPicker;
+import bd.org.coronacare.utils.DataPicker;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -92,25 +92,25 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.equals(fever)) {
-            OptionPicker.chooseAnOption(getActivity(), fever, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), fever, new String[] {"Yes", "No"});
         } else if(v.equals(tiredness)) {
-            OptionPicker.chooseAnOption(getActivity(), tiredness, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), tiredness, new String[] {"Yes", "No"});
         } else if(v.equals(dryCough)) {
-            OptionPicker.chooseAnOption(getActivity(), dryCough, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), dryCough, new String[] {"Yes", "No"});
         } else if(v.equals(breathing)) {
-            OptionPicker.chooseAnOption(getActivity(), breathing, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), breathing, new String[] {"Yes", "No"});
         } else if(v.equals(soreThroat)) {
-            OptionPicker.chooseAnOption(getActivity(), soreThroat, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), soreThroat, new String[] {"Yes", "No"});
         } else if(v.equals(pains)) {
-            OptionPicker.chooseAnOption(getActivity(), pains, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), pains, new String[] {"Yes", "No"});
         } else if(v.equals(nasalCongestion)) {
-            OptionPicker.chooseAnOption(getActivity(), nasalCongestion, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), nasalCongestion, new String[] {"Yes", "No"});
         } else if(v.equals(runnyNose)) {
-            OptionPicker.chooseAnOption(getActivity(), runnyNose, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), runnyNose, new String[] {"Yes", "No"});
         } else if(v.equals(diarrhea)) {
-            OptionPicker.chooseAnOption(getActivity(), diarrhea, new String[] {"Yes", "No"});
+            DataPicker.chooseAnOption(getActivity(), diarrhea, new String[] {"Yes", "No"});
         } else if(v.equals(contactWithPatient)) {
-            OptionPicker.chooseAnOption(getActivity(), contactWithPatient, new String[] {"Yes", "No", "Don't know"});
+            DataPicker.chooseAnOption(getActivity(), contactWithPatient, new String[] {"Yes", "No", "Don't know"});
         } else if(v.equals(contBtn)) {
             if (TextUtils.isEmpty(fever.getText()) || TextUtils.isEmpty(tiredness.getText()) || TextUtils.isEmpty(dryCough.getText()) || TextUtils.isEmpty(breathing.getText()) || TextUtils.isEmpty(soreThroat.getText()) || TextUtils.isEmpty(pains.getText()) || TextUtils.isEmpty(nasalCongestion.getText()) || TextUtils.isEmpty(runnyNose.getText()) || TextUtils.isEmpty(diarrhea.getText()) || TextUtils.isEmpty(contactWithPatient.getText())) {
                 Toast.makeText(getActivity(), "All fields are required", Toast.LENGTH_SHORT).show();
