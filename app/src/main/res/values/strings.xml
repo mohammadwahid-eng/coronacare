@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoronaCare</string>
+    <string name="home">Home</string>
+    <string name="chats">Chats</string>
+    <string name="menu">Menu</string>
+    <string name="plasma">Plasma</string>
+    <string name="analysis">Analysis</string>
+    <string name="minus">-</string>
 </resources>

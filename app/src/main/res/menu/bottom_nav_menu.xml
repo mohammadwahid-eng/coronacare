@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bn_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_24"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/bn_plasma"
+        android:enabled="true"
+        android:icon="@drawable/ic_plasma_24"
+        android:title="@string/plasma"/>
+    <item
+        android:id="@+id/bn_analysis"
+        android:enabled="true"
+        android:icon="@drawable/ic_analysis_24"
+        android:title="@string/analysis"/>
+    <item
+        android:id="@+id/bn_chat"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat_24"
+        android:title="@string/chats"/>
+    <item
+        android:id="@+id/bn_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_24"
+        android:title="@string/menu"/>
+</menu>
