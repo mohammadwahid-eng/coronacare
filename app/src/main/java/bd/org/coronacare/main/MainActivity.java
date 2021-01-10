@@ -35,13 +35,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         toolbar.setNavigationIcon(null);
 
         if (savedInstanceState==null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.main_frame, new HomeFragment())
-                    .commit();
-            toolbar.setTitle("Home");
+            showHome();
         }
+    }
+
+    private void showHome() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.main_frame, new HomeFragment())
+                .commit();
+        bottomNavigation.setSelectedItemId(R.id.bn_home);
+        toolbar.setTitle("Home");
     }
 
     @Override
@@ -82,5 +87,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 .commit();
         toolbar.setTitle(title);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (bottomNavigation.getSelectedItemId()==R.id.bn_home) {
+            super.onBackPressed();
+        } else {
+            showHome();
+        }
     }
 }
