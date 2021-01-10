@@ -6,4 +6,17 @@
     <string name="plasma">Plasma</string>
     <string name="analysis">Analysis</string>
     <string name="minus">-</string>
+    <string name="choose_an_option">Choose an option</string>
+    <string name="text_continue">Continue</string>
+    <string name="contact_with_patient">Contact With Patient</string>
+    <string name="diarrhea">Diarrhea</string>
+    <string name="runny_nose">Runny Nose</string>
+    <string name="nasal_congestion">Nasal Congestion</string>
+    <string name="pains">Pains</string>
+    <string name="sore_throat">Sore Throat</string>
+    <string name="difficulty_in_breathing">Difficulty In Breathing</string>
+    <string name="dry_cough">Dry Cough</string>
+    <string name="tiredness">Tiredness</string>
+    <string name="fever">Fever</string>
+    <string name="rska_note">rska</string>
 </resources>
