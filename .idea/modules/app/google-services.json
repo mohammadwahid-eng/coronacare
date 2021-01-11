@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "742455044810",
+    "firebase_url": "https://corona-care-9ed02.firebaseio.com",
+    "project_id": "corona-care-9ed02",
+    "storage_bucket": "corona-care-9ed02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742455044810:android:ae6b0471142ca6e9a9e233",
+        "android_client_info": {
+          "package_name": "bd.org.coronacare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742455044810-bcevsdd0g2442k35893fm3b2p0fjbkiq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bd.org.coronacare",
+            "certificate_hash": "838eec13353482699c8fd1f6b42cc551b2393564"
+          }
+        },
+        {
+          "client_id": "742455044810-ts18261nr6jp8daeeh4pcbn5o9h02v5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd0XghChsgYQBwKUZG4gwf_fk_Un0MJy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742455044810-ts18261nr6jp8daeeh4pcbn5o9h02v5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

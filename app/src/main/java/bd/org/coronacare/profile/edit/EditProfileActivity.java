@@ -1,5 +1,6 @@
 package bd.org.coronacare.profile.edit;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,23 +22,48 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import bd.org.coronacare.R;
+import bd.org.coronacare.models.Doctor;
+import bd.org.coronacare.models.User;
 import bd.org.coronacare.utils.DataPicker;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private StorageReference mStorage;
 
     private MaterialToolbar toolbar;
     private NestedScrollView container;
     private CircularImageView photo;
     private CircularImageView photoBtn;
+    private Uri photoURI;
     private SwitchMaterial donor;
     private TextInputEditText name;
     private TextInputEditText dob;
@@ -65,6 +92,11 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
+        mStorage = FirebaseStorage.getInstance().getReference();
 
         preLoader = new ProgressDialog(this);
         preLoader.setCanceledOnTouchOutside(false);
@@ -158,9 +190,56 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
-    private void updateProfile() {
-        preLoader.setMessage("Updating...");
-        preLoader.show();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        mDatabase.child("users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if (mUser!=null) {
+                    Picasso.get().load(mUser.getPhoto()).placeholder(R.drawable.gr_avatar).into(photo);
+                    donor.setChecked(mUser.isDonor());
+                    name.setText(mUser.getName());
+                    dob.setText(mUser.getDob());
+                    gender.setText(mUser.getGender());
+                    bgroup.setText(mUser.getBgroup());
+                    thana.setText(mUser.getThana());
+                    district.setText(mUser.getDistrict());
+                    occupation.setText(mUser.getOccupation());
+
+                    Doctor mDoctor = mUser.getDoctor();
+                    if (mDoctor!=null) {
+                        doctorLayout.setVisibility(View.VISIBLE);
+                        qualification.setText(mDoctor.getQualification());
+                        specializations.setText(mDoctor.getSpecializations());
+                        experience.setText(mDoctor.getExperience());
+                        fee.setText(mDoctor.getFee());
+                        timeFrom.setText(mDoctor.getTfrom());
+                        timeTo.setText(mDoctor.getTimeto());
+                        offDays.setText(mDoctor.getOffdays());
+                        hospitalName.setText(mDoctor.getHname());
+                        hospitalThana.setText(mDoctor.getHthana());
+                        hospitalDistrict.setText(mDoctor.getHdistrict());
+                        hospitalMobile.setText(mDoctor.getHmobile());
+                        service.setText(mDoctor.isService() ? "Yes" : "No");
+                    }
+
+                    preLoader.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(EditProfileActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void choosePhoto() {
@@ -178,9 +257,83 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
             byte[] data = baos.toByteArray();
+
+            mStorage.child("photos").child(mAuth.getUid() + ".jpg").putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    preLoader.dismiss();
+                    taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            photoURI = uri;
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    preLoader.dismiss();
+                    Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    preLoader.setMessage("Uploading: " + (int)progress + "%");
+                }
+            });
         }
     }
 
+    private void updateProfile() {
+        preLoader.setMessage("Updating...");
+        preLoader.show();
+
+        Map user = new HashMap<>();
+        if (photoURI!=null) {
+            user.put("users/" + mAuth.getUid() + "/photo", photoURI.toString());
+        }
+        user.put("users/" + mAuth.getUid() + "/donor", donor.isChecked());
+        user.put("users/" + mAuth.getUid() + "/name", name.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/dob", dob.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/gender", gender.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/bgroup", bgroup.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/thana", thana.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/district", district.getText().toString());
+        user.put("users/" + mAuth.getUid() + "/occupation", occupation.getText().toString());
+
+        if (occupation.getText().toString().equals("Doctor")) {
+            Map doctor = new HashMap<>();
+            doctor.put("qualification", qualification.getText().toString());
+            doctor.put("specializations", specializations.getText().toString());
+            doctor.put("hname", hospitalName.getText().toString());
+            doctor.put("hthana", hospitalThana.getText().toString());
+            doctor.put("hdistrict", hospitalDistrict.getText().toString());
+            doctor.put("hmobile", hospitalMobile.getText().toString());
+            doctor.put("experience", experience.getText().toString());
+            doctor.put("fee", fee.getText().toString());
+            doctor.put("tfrom", timeFrom.getText().toString());
+            doctor.put("timeto", timeTo.getText().toString());
+            doctor.put("offdays", offDays.getText().toString());
+            doctor.put("service", service.getText().toString().equals("Yes"));
+            user.put("users/" + mAuth.getUid() + "/doctor", doctor);
+        } else {
+            user.put("users/" + mAuth.getUid() + "/doctor", null);
+        }
+
+        mDatabase.updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                preLoader.dismiss();
+                if (task.isSuccessful()) {
+                    Toast.makeText(EditProfileActivity.this, "Profile has updated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(EditProfileActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
 
     @Override
     public void onClick(View v) {
