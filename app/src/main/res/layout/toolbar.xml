@@ -8,6 +8,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         style="@style/Widget.MaterialComponents.Toolbar.Surface"
+        android:theme="@style/AppTheme.Toolbar"
         android:id="@+id/toolbar"
         app:title="@string/minus"
         app:titleTextColor="@color/colorPrimaryDark"

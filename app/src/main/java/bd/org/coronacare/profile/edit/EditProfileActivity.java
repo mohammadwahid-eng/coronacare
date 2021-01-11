@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
@@ -27,6 +29,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +48,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -136,32 +140,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         thana.setOnClickListener(this);
         district.setOnClickListener(this);
         occupation.setOnClickListener(this);
-        occupation.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.toString().equals("Doctor")) {
-                    doctorLayout.setVisibility(View.VISIBLE);
-                    new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            container.smoothScrollTo(0, doctorLayout.getTop() - 44, 2000);
-                        }
-                    }, 100);
-                } else {
-                    doctorLayout.setVisibility(View.GONE);
-                }
-            }
-        });
 
         specializations.setOnClickListener(this);
         hospitalThana.setOnClickListener(this);
@@ -188,13 +166,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 finish();
             }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        if (savedInstanceState==null) {
+            updateUI(mAuth.getCurrentUser());
+        }
     }
 
     private void updateUI(FirebaseUser currentUser) {
@@ -285,6 +260,41 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    private void chooseAnOption(final TextInputEditText field, final String[] options) {
+        final StringBuilder selected = new StringBuilder();
+        new MaterialAlertDialogBuilder(this, R.style.AppTheme_MaterialAlertDialog)
+                .setTitle("Choose an option")
+                .setSingleChoiceItems(options, Arrays.asList(options).indexOf(field.getText().toString()), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position) {
+                        selected.append(options[position]);
+                    }
+                })
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        field.setText(selected.toString());
+                        if (field.getId() == R.id.ep_occupation) {
+                            if (field.getText().toString().equals("Doctor")) {
+                                doctorLayout.setVisibility(View.VISIBLE);
+                                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        container.smoothScrollTo(0, doctorLayout.getTop() - 44, 2000);
+                                    }
+                                }, 100);
+                            } else {
+                                doctorLayout.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .setCancelable(false)
+                .show();
+    }
+
+
     private void updateProfile() {
         preLoader.setMessage("Updating...");
         preLoader.show();
@@ -350,7 +360,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         } else if(v.equals(district)) {
             DataPicker.chooseAnOption(this, district, new String[] {"Bagerhat", "Bandarban", "Barguna", "Barisal", "Bhola", "Bogra", "Brahmanbaria", "Chandpur", "Chittagong", "Chuadanga", "Comilla", "Cox's Bazar", "Dhaka", "Dinajpur", "Faridpur", "Feni", "Gaibandha", "Gazipur", "Gopalganj", "Habiganj", "Jamalpur", "Jessore", "Jhalokati", "Jhenaidah", "Joypurhat", "Khagrachari", "Khulna", "Kishoreganj", "Kurigram", "Kushtia", "Lakshmipur", "Lalmonirhat", "Madaripur", "Magura", "Manikganj", "Maulvibazar", "Meherpur", "Munshiganj", "Mymensingh", "Naogaon", "Narail", "Narayanganj", "Narsingdi", "Natore", "Nawabganj", "Netrokona", "Nilphamari", "Noakhali", "Pabna", "Panchagarh", "Patuakhali", "Pirojpur", "Rajbari", "Rajshahi", "Rangamati", "Rangpur", "Satkhira", "Shariatpur", "Sherpur", "Sirajgonj", "Sunamganj", "Sylhet", "Tangail", "Thakurgaon"});
         } else if(v.equals(occupation)) {
-            DataPicker.chooseAnOption(this, occupation, new String[] {"Doctor", "Engineer", "Lawyer", "Businessman", "Teacher", "Other"});
+            chooseAnOption(occupation, new String[] {"Doctor", "Engineer", "Lawyer", "Businessman", "Teacher", "Other"});
         } else if(v.equals(hospitalThana)) {
             DataPicker.chooseAnOption(this, hospitalThana, new String[] {"Adabor", "Airport", "Akbar Shah", "Aranghata", "Badda", "Bakolia", "Banani", "Bandar", "Bangshal", "Barisal University", "Bayazid Bostami", "Belpukur", "Bhashantek", "Boalia", "Cantonment", "Chackbazar", "Chandgaon", "Chandrima", "Char Monai", "Chawk Bazar", "Dakshin Khan", "Damkura", "Darus-Salam", "Daulatpur", "Demra", "Dhanmondi", "Doublemooring", "EPZ", "Gandaria", "Gulshan", "Hajirhat", "Halishahar", "Haragach", "Harintana", "Hatirjheel", "Hazaribag", "Jalalabad", "Jattrabari", "Kadamtoli", "Kafrul", "Kalabagan", "Kamrangirchar", "Karnahar", "Karnophuli", "Kashipur", "Kasiadanga", "Katakhali", "Kawnia", "Khalishpur", "Khan Jahan Ali", "Khilgaon", "Khilkhet", "Khulna Sadar", "Khulshi", "Kotwali", "Kotwali Model", "Labanchara", "Lalbagh", "Mahiganj", "Mirpur Model", "Moglabazar", "Mohammadpur", "Motihar", "Motijheel", "Mugda", "New Market", "Paba", "Pahartali", "Pallabi", "Paltan Model", "Panchlaish", "Parshuram", "Patenga", "Rajpara", "Ramna Model", "Rampura", "Rupatali", "Rupnagar", "Sabujbag", "Sadarghat", "Shah Ali", "Shah Poran (R.)", "Shahbag", "Shahjahanpur", "Shahmukhdum", "Sher e Bangla Nagar", "Shyampur", "Sonadanga", "South Surma", "Sutrapur", "Tajhat", "Tejgaon", "Tejgaon Industrial", "Turag", "Uttar Khan", "Uttara East", "Uttara West", "Vatara", "Wari"});
         } else if(v.equals(hospitalDistrict)) {
