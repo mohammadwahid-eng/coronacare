@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/hnd"
+    android:id="@+id/hdr"
     android:layout_marginHorizontal="8dp"
     android:layout_width="250dp"
     android:layout_height="wrap_content">
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/hnd_name"
+                    android:id="@+id/hdr_name"
                     android:text="@string/minus"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/hnd_qualification"
+                    android:id="@+id/hdr_qualification"
                     android:text="@string/minus"
                     android:maxLines="1"
                     android:ellipsize="end"
@@ -48,7 +48,7 @@
 
                 <RatingBar
                     style="?attr/ratingBarStyleSmall"
-                    android:id="@+id/hnd_rating"
+                    android:id="@+id/hdr_rating"
                     android:progressTint="@android:color/holo_orange_light"
                     android:secondaryProgressTint="@android:color/holo_orange_light"
                     android:numStars="5"
@@ -62,7 +62,7 @@
     </FrameLayout>
 
     <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/hnd_photo"
+        android:id="@+id/hdr_photo"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/gr_avatar"

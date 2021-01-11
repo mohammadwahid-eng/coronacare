@@ -1,6 +1,7 @@
 package bd.org.coronacare.main.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,17 +16,35 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import bd.org.coronacare.R;
+import bd.org.coronacare.doctors.DoctorsActivity;
+import bd.org.coronacare.models.Doctor;
 import bd.org.coronacare.models.Tips;
 import bd.org.coronacare.models.User;
+import bd.org.coronacare.profile.view.DoctorProfileActivity;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
+    private MaterialTextView currentUserName;
+    private CircularImageView currentUserPhoto;
+
+    private MaterialTextView seeAllBtn;
     private RecyclerView tipsList;
     private RecyclerView doctorList;
     private List<User> doctors = new ArrayList<>();
@@ -36,12 +55,42 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
+
         View frame = inflater.inflate(R.layout.fragment_home, container, false);
         tipsList = frame.findViewById(R.id.hpt_list);
         doctorList = frame.findViewById(R.id.hdr_list);
-        showPreventionTips();
-        showDoctors();
+        currentUserName = frame.findViewById(R.id.hcu_name);
+        currentUserPhoto = frame.findViewById(R.id.hcu_photo);
+        seeAllBtn = frame.findViewById(R.id.hdr_see_all);
+
+        seeAllBtn.setOnClickListener(this);
+
+        updateUI(mAuth.getCurrentUser());
         return frame;
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        showPreventionTips();
+
+        mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if (mUser!=null) {
+                    Picasso.get().load(mUser.getPhoto()).placeholder(R.drawable.gr_avatar).into(currentUserPhoto);
+                    currentUserName.setText(mUser.getName());
+                    showDoctors(mUser.getThana(), mUser.getDistrict());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void showPreventionTips() {
@@ -60,25 +109,70 @@ public class HomeFragment extends Fragment {
         tipsList.setAdapter(adapter);
     }
 
-    private void showDoctors() {
+    private void showDoctors(String thana, String district) {
         NearbyDoctorsAdapter adapter = new NearbyDoctorsAdapter(getActivity(), doctors);
         doctorList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         doctorList.setHasFixedSize(true);
         doctorList.setAdapter(adapter);
 
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        doctors.add(new User());
-        adapter.notifyDataSetChanged();
+        mDatabase.child("users").orderByChild("thana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
+                doctors.clear();
+                int x = 0;
+                for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
+                    User mUser = snapshot.getValue(User.class);
+                    if (mUser!=null) {
+                        Doctor mDoctor = mUser.getDoctor();
+                        if (mDoctor!=null && !mUser.getId().equals(mAuth.getUid()) && mDoctor.isService()) {
+                            if (x>10) break;
+                            doctors.add(mUser);
+                            adapter.notifyDataSetChanged();
+                            x++;
+                        }
+                    }
+                }
 
+                if (x==0) {
+                    mDatabase.child("users").orderByChild("district").equalTo(district).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataDistrictSnapshot) {
+                            doctors.clear();
+                            int y = 0;
+                            for (DataSnapshot snapshot : dataDistrictSnapshot.getChildren()) {
+                                User mUser = snapshot.getValue(User.class);
+                                if (mUser!=null) {
+                                    Doctor mDoctor = mUser.getDoctor();
+                                    if (mDoctor!=null && mDoctor.getHdistrict().equals(district) && !mUser.getId().equals(mAuth.getUid()) && mDoctor.isService()) {
+                                        if (y>10) break;
+                                        doctors.add(mUser);
+                                        adapter.notifyDataSetChanged();
+                                        y++;
+                                    }
+                                }
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.equals(seeAllBtn)) {
+            startActivity(new Intent(getActivity(), DoctorsActivity.class));
+        }
     }
 
     public static class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.TipsViewHolder> {
@@ -133,25 +227,22 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull NearbyDoctorViewHolder holder, int position) {
-//            Picasso.get().load(doctors.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
-//            holder.name.setText(doctors.get(position).getName());
-//            if (doctors.get(position).getDoctor()!=null) {
-//                if (doctors.get(position).getDoctor().getQualification()!=null) {
-//                    holder.qualification.setText(doctors.get(position).getDoctor().getQualification());
-//                }
-//                if (doctors.get(position).getDoctor().getRating()!=null) {
-//                    holder.rating.setRating(Float.parseFloat(doctors.get(position).getDoctor().getRating()));
-//                }
-//            }
-//
-//            holder.item.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(mContext, DoctorProfileActivity.class);
-//                    intent.putExtra("USERID", doctors.get(position).getId());
-//                    mContext.startActivity(intent);
-//                }
-//            });
+            Picasso.get().load(doctors.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
+            holder.name.setText(doctors.get(position).getName());
+            Doctor mDoctor = doctors.get(position).getDoctor();
+            if (mDoctor!=null) {
+                holder.qualification.setText(mDoctor.getQualification());
+                if (mDoctor.getRating()!=null) {
+                    holder.rating.setRating(Float.parseFloat(mDoctor.getRating()));
+                }
+            }
+
+            holder.doctor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, DoctorProfileActivity.class).putExtra("USERID", doctors.get(position).getId()));
+                }
+            });
         }
 
         @Override
@@ -167,11 +258,11 @@ public class HomeFragment extends Fragment {
             private RatingBar rating;
             public NearbyDoctorViewHolder(@NonNull View itemView) {
                 super(itemView);
-                doctor = itemView.findViewById(R.id.hnd);
-                photo = itemView.findViewById(R.id.hnd_photo);
-                name = itemView.findViewById(R.id.hnd_name);
-                qualification = itemView.findViewById(R.id.hnd_qualification);
-                rating = itemView.findViewById(R.id.hnd_rating);
+                doctor = itemView.findViewById(R.id.hdr);
+                photo = itemView.findViewById(R.id.hdr_photo);
+                name = itemView.findViewById(R.id.hdr_name);
+                qualification = itemView.findViewById(R.id.hdr_qualification);
+                rating = itemView.findViewById(R.id.hdr_rating);
             }
         }
     }
