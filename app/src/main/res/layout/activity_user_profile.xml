@@ -1,9 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile.view.UserProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:background="@drawable/gr_circle"
+                android:backgroundTint="@color/colorFieldBG"
+                android:scaleX="1.5"
+                android:scaleY="2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
+
+            <RelativeLayout
+                android:layout_marginTop="-150dp"
+                android:paddingVertical="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/up_photo"
+                    android:src="@drawable/gr_avatar"
+                    android:layout_centerHorizontal="true"
+                    app:civ_border_color="#f6f6f6"
+                    app:civ_border_width="8dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/full_name"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_name"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/age"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_age"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/gender"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_gender"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/blood_group"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_bgroup"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/mobile_number"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_mobile"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/thana"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_thana"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/district"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_district"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/occupation"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_occupation"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:text="@string/last_active"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/up_last_active"
+                    android:text="@string/minus"
+                    android:textColor="@color/colorText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

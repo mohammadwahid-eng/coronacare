@@ -103,20 +103,37 @@ public class DateTimeFormat extends DateUtils {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static String calculateAge(String dob) {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyyy");
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static String calculateAge(String dob_string) {
+
         Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyyy");
         try {
-            date = sdf.parse(dob);
+            date = sdf.parse(dob_string);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
 
-        LocalDate dateBirth = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
-        LocalDate dateNow = LocalDate.now();
-        return String.valueOf(Period.between(dateBirth, dateNow).getYears());
+        if(date == null) return null;
+
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+        dob.setTime(date);
+
+        int year = dob.get(Calendar.YEAR);
+        int month = dob.get(Calendar.MONTH);
+        int day = dob.get(Calendar.DAY_OF_MONTH);
+        dob.set(year, month+1, day);
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
     }
+
+
 }
