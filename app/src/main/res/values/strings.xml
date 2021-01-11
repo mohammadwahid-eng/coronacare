@@ -92,4 +92,8 @@
     <string name="lwm_title">Verify your mobile</string>
     <string name="lwm_desc">We will send you a <b>One Time Password</b>\non your mobile</string>
     <string name="mobile_number_hint">019XXXXXXXXX</string>
+    <string name="lwm_otp_title">Please type the verification number\nwe\'ve sent you</string>
+    <string name="verify">Verify</string>
+    <string name="dont_receive_the_code">Don\'t receive the code?</string>
+    <string name="resend_code">Resend Code</string>
 </resources>
