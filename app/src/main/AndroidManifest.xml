@@ -12,17 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.analysis.AnalysisResultActivity"></activity>
-        <activity android:name=".profile.edit.EditProfileActivity" />
-        <activity android:name=".emergency.EmergencyActivity" />
-        <activity android:name=".about.AboutActivity" />
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".login.mobile.LoginWithMobileActivity"></activity>
+        <activity
+            android:name=".login.LoginOptionsActivity"
+            android:theme="@style/AppTheme.DarkStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.analysis.AnalysisResultActivity" />
+        <activity android:name=".profile.edit.EditProfileActivity" />
+        <activity android:name=".emergency.EmergencyActivity" />
+        <activity android:name=".about.AboutActivity" />
+        <activity android:name=".main.MainActivity"></activity>
     </application>
 
 </manifest>
