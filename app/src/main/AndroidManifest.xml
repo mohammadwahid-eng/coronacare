@@ -13,7 +13,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".login.mobile.LoginWithMobileOTPActivity"/>
-        <activity android:name=".login.mobile.LoginWithMobileActivity" />
+        <activity android:name=".login.mobile.LoginWithMobileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".login.LoginOptionsActivity"
             android:theme="@style/AppTheme.DarkStatusBar"/>
@@ -22,11 +28,7 @@
         <activity android:name=".emergency.EmergencyActivity" />
         <activity android:name=".about.AboutActivity" />
         <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

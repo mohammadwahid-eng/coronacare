@@ -10,17 +10,32 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import bd.org.coronacare.R;
 import bd.org.coronacare.about.AboutActivity;
 import bd.org.coronacare.emergency.EmergencyActivity;
+import bd.org.coronacare.login.LoginOptionsActivity;
+import bd.org.coronacare.models.User;
 import bd.org.coronacare.profile.edit.EditProfileActivity;
 
 public class MenuFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     private MaterialTextView currentUserName;
     private MaterialTextView currentUserMobile;
@@ -37,8 +52,11 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View frame = inflater.inflate(R.layout.fragment_menu, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
 
+        View frame = inflater.inflate(R.layout.fragment_menu, container, false);
         currentUserName = frame.findViewById(R.id.menu_name);
         currentUserMobile = frame.findViewById(R.id.menu_mobile);
         currentUserPhoto = frame.findViewById(R.id.menu_photo);
@@ -63,7 +81,35 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         about.setNavigationItemSelectedListener(this);
         logout.setNavigationItemSelectedListener(this);
 
+        updateUI(mAuth.getCurrentUser());
+
         return frame;
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        mDatabase.child("users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user!=null) {
+                    currentUserName.setText(user.getName());
+                    currentUserMobile.setText(user.getMobile());
+                    Picasso.get().load(user.getPhoto()).placeholder(R.drawable.gr_avatar).into(currentUserPhoto);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void doLogout() {
+        mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(false);
+        mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
+        mAuth.signOut();
+        Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -87,12 +133,9 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         } else if (item.getItemId() == R.id.mnua_us) {
             startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "ABOUT_US"));
         } else if (item.getItemId() == R.id.mnu_logout) {
-//            mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(false);
-//            mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
-//            mAuth.signOut();
-//            Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
-//            getActivity().startActivity(new Intent(getActivity(), LoginOptionsActivity.class));
-//            getActivity().finish();
+            doLogout();
+            startActivity(new Intent(getActivity(), LoginOptionsActivity.class));
+            getActivity().finish();
         }
         return true;
     }
