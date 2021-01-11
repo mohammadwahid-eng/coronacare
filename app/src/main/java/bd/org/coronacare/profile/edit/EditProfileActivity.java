@@ -173,7 +173,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void updateUI(FirebaseUser currentUser) {
-        mDatabase.child("users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User mUser = snapshot.getValue(User.class);

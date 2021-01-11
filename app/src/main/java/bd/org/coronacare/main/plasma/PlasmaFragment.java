@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,21 +15,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import bd.org.coronacare.R;
+import bd.org.coronacare.models.Doctor;
 import bd.org.coronacare.models.User;
+import bd.org.coronacare.profile.view.UserProfileActivity;
 import bd.org.coronacare.utils.DividerItemDecorator;
 
-public class PlasmaFragment extends Fragment {
+public class PlasmaFragment extends Fragment implements View.OnClickListener {
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     private RecyclerView donorList;
     private List<User> donors = new ArrayList<>();
     private DonorAdapter adapter;
+
+    private FloatingActionButton fab;
 
 
     public PlasmaFragment() {
@@ -37,10 +53,22 @@ public class PlasmaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
+
         View frame = inflater.inflate(R.layout.fragment_plasma, container, false);
         donorList = frame.findViewById(R.id.plsmd_list);
+        fab = frame.findViewById(R.id.plsmd_fab);
+        fab.setOnClickListener(this);
         showDonors();
         return frame;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("WAHID onResume");
     }
 
     private void showDonors() {
@@ -50,24 +78,69 @@ public class PlasmaFragment extends Fragment {
         donorList.setHasFixedSize(true);
         donorList.setAdapter(adapter);
 
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        donors.add(new User());
-        adapter.notifyDataSetChanged();
+        mDatabase.child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User mUser = snapshot.getValue(User.class);
+                if (mUser!=null) {
+                    loadDonorList(mUser.getBgroup(), mUser.getThana(), mUser.getDistrict());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
+    private void loadDonorList(String bgroup, String thana, String district) {
+        donors.clear();
+        adapter.notifyDataSetChanged();
+        mDatabase.child("users").orderByChild("thana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
+                for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
+                    User mUser = snapshot.getValue(User.class);
+                    if (mUser!=null && mUser.getBgroup().equals(bgroup) && mUser.isDonor() && !mUser.getId().equals(mAuth.getUid())) {
+                        Doctor mDoctor = mUser.getDoctor();
+                        if (mDoctor!=null) {
+                            if (mDoctor.getHdistrict().equals(district)) {
+                                donors.add(mUser);
+                                adapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            if (mUser.getDistrict().equals(district)) {
+                                donors.add(mUser);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.equals(fab)) {
+            startActivityForResult(new Intent(getActivity(), PlasmaDonorSearchActivity.class), 100);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100 && data!=null) {
+            loadDonorList(data.getStringExtra("BGROUP"), data.getStringExtra("THANA"), data.getStringExtra("DISTRICT"));
+        }
+    }
 
     public static class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.DonorViewHolder> {
 
@@ -87,17 +160,17 @@ public class PlasmaFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull DonorViewHolder holder, int position) {
-//            Picasso.get().load(donors.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
-//            holder.name.setText(donors.get(position).getName());
-//            holder.mobile.setText(donors.get(position).getMobile());
-//            holder.donor.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(mContext, UserProfileActivity.class);
-//                    intent.putExtra("USERID", donors.get(position).getId());
-//                    mContext.startActivity(intent);
-//                }
-//            });
+            Picasso.get().load(donors.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
+            holder.name.setText(donors.get(position).getName());
+            holder.mobile.setText(donors.get(position).getMobile());
+            holder.donor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, UserProfileActivity.class);
+                    intent.putExtra("USERID", donors.get(position).getId());
+                    mContext.startActivity(intent);
+                }
+            });
         }
 
         @Override

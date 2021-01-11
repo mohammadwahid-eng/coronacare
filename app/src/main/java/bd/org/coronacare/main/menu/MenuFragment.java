@@ -88,7 +88,7 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
     }
 
     private void updateUI(FirebaseUser currentUser) {
-        mDatabase.child("users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
