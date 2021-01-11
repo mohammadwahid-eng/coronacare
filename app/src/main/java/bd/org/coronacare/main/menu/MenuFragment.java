@@ -30,6 +30,7 @@ import bd.org.coronacare.about.AboutActivity;
 import bd.org.coronacare.emergency.EmergencyActivity;
 import bd.org.coronacare.login.LoginOptionsActivity;
 import bd.org.coronacare.models.User;
+import bd.org.coronacare.profile.edit.ChangeMobileActivity;
 import bd.org.coronacare.profile.edit.EditProfileActivity;
 
 public class MenuFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
@@ -117,7 +118,7 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         if (item.getItemId() == R.id.mnue_profile) {
             startActivity(new Intent(getActivity(), EditProfileActivity.class));
         } else if (item.getItemId() == R.id.mnue_mobile) {
-            //startActivity(new Intent(getActivity(), ProfileMobileUpdateActivity.class));
+            startActivity(new Intent(getActivity(), ChangeMobileActivity.class));
         } else if (item.getItemId() == R.id.mnue_dc) {
             startActivity(new Intent(getActivity(), EmergencyActivity.class).putExtra("TYPE", "DIAGNOSTIC_CENTER"));
         } else if (item.getItemId() == R.id.mnue_hotlines) {

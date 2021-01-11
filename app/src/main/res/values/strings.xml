@@ -96,4 +96,7 @@
     <string name="verify">Verify</string>
     <string name="dont_receive_the_code">Don\'t receive the code?</string>
     <string name="resend_code">Resend Code</string>
+    <string name="cm_title">Change your mobile</string>
+    <string name="cm_desc">We will send you a <b>One Time Password</b>\non the number</string>
+    <string name="new_mobile_number">New Mobile Number</string>
 </resources>
