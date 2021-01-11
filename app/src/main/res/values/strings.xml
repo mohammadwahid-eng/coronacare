@@ -89,4 +89,7 @@
     <string name="risk_none">Risk level:\nNone\n\nSuggestions:\nStay your home and follow corona prevention tips.</string>
     <string name="save">Save</string>
     <string name="continue_with">Continue with</string>
+    <string name="lwm_title">Verify your mobile</string>
+    <string name="lwm_desc">We will send you a <b>One Time Password</b>\non your mobile</string>
+    <string name="mobile_number_hint">019XXXXXXXXX</string>
 </resources>

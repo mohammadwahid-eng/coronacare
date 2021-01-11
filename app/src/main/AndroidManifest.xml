@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.mobile.LoginWithMobileActivity"></activity>
+        <activity android:name=".login.mobile.LoginWithMobileOTPActivity"></activity>
+        <activity android:name=".login.mobile.LoginWithMobileActivity" />
         <activity
             android:name=".login.LoginOptionsActivity"
             android:theme="@style/AppTheme.DarkStatusBar">
@@ -26,7 +27,7 @@
         <activity android:name=".profile.edit.EditProfileActivity" />
         <activity android:name=".emergency.EmergencyActivity" />
         <activity android:name=".about.AboutActivity" />
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity" />
     </application>
 
 </manifest>
