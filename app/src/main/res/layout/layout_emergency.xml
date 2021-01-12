@@ -13,7 +13,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/emrg_name"
-        android:text="@string/emergency"
+        android:text="@string/minus"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginStart="16dp"
@@ -27,6 +27,7 @@
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name" />
+        android:contentDescription="@string/app_name"
+        app:tint="@color/common_google_signin_btn_text_dark_disabled"/>
 
 </LinearLayout>
