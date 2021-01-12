@@ -13,7 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".main.chat.conversation.ConversationActivity"></activity>
+        <activity android:name=".onboarding.OnboardingActivity"></activity>
+        <activity
+            android:name=".splash.SplashActivity"
+            android:theme="@style/AppTheme.DarkStatusBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".main.chat.conversation.ConversationActivity" />
         <activity android:name=".doctors.DoctorSearchActivity" />
         <activity android:name=".doctors.DoctorsActivity" />
         <activity android:name=".profile.view.DoctorProfileActivity" />
@@ -30,13 +40,7 @@
         <activity android:name=".profile.edit.EditProfileActivity" />
         <activity android:name=".emergency.EmergencyActivity" />
         <activity android:name=".about.AboutActivity" />
-        <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".main.MainActivity" />
     </application>
 
 </manifest>
