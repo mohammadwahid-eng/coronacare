@@ -106,4 +106,9 @@
     <string name="call_now">Call Now</string>
     <string name="call">Call</string>
     <string name="feedbacks">Feedbacks</string>
+    <string name="send_message">Send Message</string>
+    <string name="book_appointment">Call for Appointment</string>
+    <string name="give_feedback">Give Feedback</string>
+    <string name="practice_time">Practice Time</string>
+    <string name="hospital_mobile">Hospital\'s Mobile No</string>
 </resources>

@@ -2,9 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/mnuu_call"
+        android:id="@+id/mndr_message"
         android:enabled="true"
-        android:icon="@drawable/ic_call_24"
-        app:showAsAction="always"
-        android:title="@string/call"/>
+        app:showAsAction="never"
+        android:title="@string/send_message"/>
+    <item
+        android:id="@+id/mndr_appointment"
+        android:enabled="true"
+        app:showAsAction="never"
+        android:title="@string/book_appointment"/>
+    <item
+        android:id="@+id/mndr_feedback"
+        android:enabled="true"
+        app:showAsAction="never"
+        android:title="@string/give_feedback"/>
 </menu>
