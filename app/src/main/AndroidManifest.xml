@@ -13,12 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".doctors.DoctorsActivity"></activity>
+        <activity android:name=".doctors.DoctorSearchActivity"></activity>
+        <activity android:name=".doctors.DoctorsActivity" />
         <activity android:name=".profile.view.DoctorProfileActivity" />
         <activity android:name=".main.plasma.PlasmaDonorSearchActivity" />
         <activity android:name=".profile.view.UserProfileActivity" />
-        <activity android:name=".profile.edit.ChangeMobileOTPActivity" />
-        <activity android:name=".profile.edit.ChangeMobileActivity" />
+        <activity android:name=".profile.edit.mobile.ChangeMobileOTPActivity" />
+        <activity android:name=".profile.edit.mobile.ChangeMobileActivity" />
         <activity android:name=".login.mobile.LoginWithMobileOTPActivity" />
         <activity android:name=".login.mobile.LoginWithMobileActivity" />
         <activity

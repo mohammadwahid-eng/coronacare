@@ -30,7 +30,7 @@ import bd.org.coronacare.about.AboutActivity;
 import bd.org.coronacare.emergency.EmergencyActivity;
 import bd.org.coronacare.login.LoginOptionsActivity;
 import bd.org.coronacare.models.User;
-import bd.org.coronacare.profile.edit.ChangeMobileActivity;
+import bd.org.coronacare.profile.edit.mobile.ChangeMobileActivity;
 import bd.org.coronacare.profile.edit.EditProfileActivity;
 
 public class MenuFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {

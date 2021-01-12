@@ -65,12 +65,6 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
         return frame;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        System.out.println("WAHID onResume");
-    }
-
     private void showDonors() {
         adapter = new DonorAdapter(getActivity(), donors);
         donorList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -124,7 +118,6 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-
     }
 
     @Override

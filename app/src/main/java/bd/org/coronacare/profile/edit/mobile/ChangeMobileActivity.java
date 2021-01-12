@@ -1,4 +1,4 @@
-package bd.org.coronacare.profile.edit;
+package bd.org.coronacare.profile.edit.mobile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

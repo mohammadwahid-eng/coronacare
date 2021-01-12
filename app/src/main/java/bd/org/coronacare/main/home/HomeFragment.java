@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         doctorList.setHasFixedSize(true);
         doctorList.setAdapter(adapter);
 
-        mDatabase.child("users").orderByChild("thana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child("users").orderByChild("doctor/hthana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
                 doctors.clear();
@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
 
                 if (x==0) {
-                    mDatabase.child("users").orderByChild("district").equalTo(district).addListenerForSingleValueEvent(new ValueEventListener() {
+                    mDatabase.child("users").orderByChild("doctor/district").equalTo(district).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataDistrictSnapshot) {
                             doctors.clear();
