@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -22,8 +26,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.annotations.Nullable;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +36,7 @@ import java.util.List;
 
 import bd.org.coronacare.R;
 import bd.org.coronacare.main.chat.conversation.ConversationActivity;
+import bd.org.coronacare.models.Chat;
 import bd.org.coronacare.models.User;
 import bd.org.coronacare.utils.DividerItemDecorator;
 
@@ -61,18 +66,46 @@ public class ChatFragment extends Fragment {
     }
 
     private void showChatUsers() {
+
         adapter = new ChatsAdapter(getActivity(), users);
         chatUserList.setLayoutManager(new LinearLayoutManager(getActivity()));
         chatUserList.addItemDecoration(new DividerItemDecorator(getActivity().getResources().getDrawable(R.drawable.gr_line_horizontal)));
         chatUserList.setHasFixedSize(true);
         chatUserList.setAdapter(adapter);
 
-        mDatabase.child("messages").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("messages").child(mAuth.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataKeySnapshot) {
-                for (DataSnapshot snapshot : dataKeySnapshot.getChildren()) {
-                    loadChatUser(snapshot.getKey());
-                }
+            public void onChildAdded(@NonNull DataSnapshot dataChatSnapshot, @Nullable String previousChildName) {
+                mDatabase.child("users").child(dataChatSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User mUser = snapshot.getValue(User.class);
+                        if (mUser!=null) {
+                            users.add(mUser);
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                System.out.println("WAHID CHANGE" + snapshot.getKey());
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
             }
 
             @Override
@@ -80,27 +113,39 @@ public class ChatFragment extends Fragment {
 
             }
         });
+
+
+
+
+
+//        mDatabase.child("messages").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataKeySnapshot) {
+//                for (DataSnapshot snapshot : dataKeySnapshot.getChildren()) {
+//                    loadChatUser(snapshot.getKey());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
-    private void loadChatUser(String userID) {
-        mDatabase.child("users").child(userID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                if (user!=null) {
-                    users.add(user);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+    @Override
+    public void onStart() {
+        super.onStart();
+//        adapter.startListening();
     }
 
-    public static class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHolder>{
+    @Override
+    public void onStop() {
+        super.onStop();
+//        adapter.stopListening();
+    }
+
+        public static class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHolder>{
 
         private Context mContext;
         private List<User> users;
@@ -152,4 +197,43 @@ public class ChatFragment extends Fragment {
             }
         }
     }
+
+
+
+//    public static class ChatsAdapter extends FirebaseRecyclerAdapter<Chat, ChatsAdapter.ChatViewHolder> {
+//
+//        public ChatsAdapter(@NonNull FirebaseRecyclerOptions<Chat> options) {
+//            super(options);
+//        }
+//
+//        @NonNull
+//        @Override
+//        public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//            return new ChatsAdapter.ChatViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_chat_user, parent, false));
+//        }
+//
+//        @Override
+//        protected void onBindViewHolder(@NonNull ChatViewHolder holder, int position, @NonNull Chat chat) {
+//            System.out.println("WAHID " + chat.getId());
+//        }
+//
+//        public static class ChatViewHolder extends RecyclerView.ViewHolder {
+//            private RelativeLayout user;
+//            private CircularImageView photo;
+//            private CircularImageView activity;
+//            private MaterialTextView name;
+//            private MaterialTextView message;
+//            private MaterialTextView time;
+//            public ChatViewHolder(@NonNull View itemView) {
+//                super(itemView);
+//                user        = itemView.findViewById(R.id.chtu);
+//                photo       = itemView.findViewById(R.id.chtu_photo);
+//                activity    = itemView.findViewById(R.id.chtu_activity);
+//                name        = itemView.findViewById(R.id.chtu_name);
+//                message     = itemView.findViewById(R.id.chtu_message);
+//                time        = itemView.findViewById(R.id.chtu_time);
+//            }
+//        }
+//    }
+
 }

@@ -13,6 +13,8 @@
         app:title="@string/minus"
         app:titleTextColor="@color/colorPrimaryDark"
         app:titleTextAppearance="@style/AppTheme.Toolbar.TitleText"
+        app:subtitleTextColor="@android:color/secondary_text_light_nodisable"
+        app:subtitleTextAppearance="@style/AppTheme.Toolbar.SubTitleText"
         app:navigationIcon="@drawable/ic_arrow_back_20"
         app:navigationIconTint="@color/colorPrimaryDark"
         app:contentInsetStartWithNavigation="0dp"

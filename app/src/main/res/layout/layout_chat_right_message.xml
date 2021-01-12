@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="8dp"
+    android:paddingStart="60dp"
+    android:paddingEnd="16dp"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/convr_message"
+        android:background="@drawable/bg_chat_right"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

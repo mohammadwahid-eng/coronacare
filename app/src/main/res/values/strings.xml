@@ -113,4 +113,6 @@
     <string name="hospital_mobile">Hospital\'s Mobile No</string>
     <string name="write_your_feedback">Write your feedback</string>
     <string name="submit">Submit</string>
+    <string name="write_message_here">Write message here</string>
+    <string name="info">Info</string>
 </resources>
