@@ -16,6 +16,14 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -23,10 +31,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bd.org.coronacare.R;
+import bd.org.coronacare.main.chat.conversation.ConversationActivity;
 import bd.org.coronacare.models.User;
 import bd.org.coronacare.utils.DividerItemDecorator;
 
 public class ChatFragment extends Fragment {
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     private RecyclerView chatUserList;
     private List<User> users = new ArrayList<>();
@@ -39,6 +51,10 @@ public class ChatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View frame = inflater.inflate(R.layout.fragment_chat, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.keepSynced(true);
+
         chatUserList = frame.findViewById(R.id.chtu_list);
         showChatUsers();
         return frame;
@@ -51,23 +67,37 @@ public class ChatFragment extends Fragment {
         chatUserList.setHasFixedSize(true);
         chatUserList.setAdapter(adapter);
 
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-        adapter.notifyDataSetChanged();
+        mDatabase.child("messages").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataKeySnapshot) {
+                for (DataSnapshot snapshot : dataKeySnapshot.getChildren()) {
+                    loadChatUser(snapshot.getKey());
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void loadChatUser(String userID) {
+        mDatabase.child("users").child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user!=null) {
+                    users.add(user);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public static class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHolder>{
@@ -88,15 +118,15 @@ public class ChatFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-//            Picasso.get().load(users.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
-//            holder.activity.setColorFilter(users.get(position).isOnline() ? Color.rgb(49, 162, 76) : Color.rgb(200, 200, 200));
-//            holder.name.setText(users.get(position).getName());
-//            holder.user.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    //mContext.startActivity(new Intent(mContext, ConversationActivity.class).putExtra("USERID", users.get(position).getId()));
-//                }
-//            });
+            Picasso.get().load(users.get(position).getPhoto()).placeholder(R.drawable.gr_avatar).into(holder.photo);
+            holder.activity.setColorFilter(users.get(position).isOnline() ? Color.rgb(49, 162, 76) : Color.rgb(200, 200, 200));
+            holder.name.setText(users.get(position).getName());
+            holder.user.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, ConversationActivity.class).putExtra("USERID", users.get(position).getId()));
+                }
+            });
         }
 
         @Override
