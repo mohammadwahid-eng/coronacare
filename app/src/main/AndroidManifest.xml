@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".doctors.DoctorSearchActivity"></activity>
+        <activity android:name=".main.chat.conversation.ConversationActivity"></activity>
+        <activity android:name=".doctors.DoctorSearchActivity" />
         <activity android:name=".doctors.DoctorsActivity" />
         <activity android:name=".profile.view.DoctorProfileActivity" />
         <activity android:name=".main.plasma.PlasmaDonorSearchActivity" />

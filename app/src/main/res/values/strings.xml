@@ -111,4 +111,6 @@
     <string name="give_feedback">Give Feedback</string>
     <string name="practice_time">Practice Time</string>
     <string name="hospital_mobile">Hospital\'s Mobile No</string>
+    <string name="write_your_feedback">Write your feedback</string>
+    <string name="submit">Submit</string>
 </resources>

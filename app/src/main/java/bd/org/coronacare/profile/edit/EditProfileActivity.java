@@ -102,7 +102,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         mDatabase.keepSynced(true);
         mStorage = FirebaseStorage.getInstance().getReference();
 
-        preLoader = new ProgressDialog(this);
+        preLoader = new ProgressDialog(this, R.style.AppTheme_ProgressDialog);
         preLoader.setCanceledOnTouchOutside(false);
 
         toolbar = findViewById(R.id.toolbar);
