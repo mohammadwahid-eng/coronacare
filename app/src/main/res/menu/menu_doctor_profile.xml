@@ -10,7 +10,7 @@
         android:id="@+id/mndr_appointment"
         android:enabled="true"
         app:showAsAction="never"
-        android:title="@string/book_appointment"/>
+        android:title="@string/call_for_appointment"/>
     <item
         android:id="@+id/mndr_feedback"
         android:enabled="true"

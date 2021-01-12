@@ -107,7 +107,7 @@
     <string name="call">Call</string>
     <string name="feedbacks">Feedbacks</string>
     <string name="send_message">Send Message</string>
-    <string name="book_appointment">Call for Appointment</string>
+    <string name="call_for_appointment">Call for Appointment</string>
     <string name="give_feedback">Give Feedback</string>
     <string name="practice_time">Practice Time</string>
     <string name="hospital_mobile">Hospital\'s Mobile No</string>
@@ -115,4 +115,16 @@
     <string name="submit">Submit</string>
     <string name="write_message_here">Write message here</string>
     <string name="info">Info</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="search_doctors">Search Doctors</string>
+    <string name="online_consultation">Online Consultation</string>
+    <string name="book_appointment">Book Appointment</string>
+    <string name="plasma_management">Plasma Management</string>
+    <string name="search_doctors_desc">Get list of best doctor nearby you</string>
+    <string name="online_consultation_desc">Communicate with doctors from home</string>
+    <string name="book_appointment_desc">Book an appointment with a right doctor</string>
+    <string name="analysis_desc">COVID-19 risk assessment by symptoms</string>
+    <string name="plasma_management_desc">Search plasma donors nearby you</string>
+    <string name="emergency_desc">Situation out of control? call hotlines</string>
 </resources>

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".onboarding.OnboardingActivity"></activity>
+        <activity android:name=".onboarding.OnboardingActivity"/>
         <activity
             android:name=".splash.SplashActivity"
             android:theme="@style/AppTheme.DarkStatusBar">
