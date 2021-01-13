@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +46,7 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
     private DonorAdapter adapter;
 
     private FloatingActionButton fab;
+    private ShimmerFrameLayout shimmerDonors;
 
 
     public PlasmaFragment() {
@@ -60,6 +62,7 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
         View frame = inflater.inflate(R.layout.fragment_plasma, container, false);
         donorList = frame.findViewById(R.id.plsmd_list);
         fab = frame.findViewById(R.id.plsmd_fab);
+        shimmerDonors = frame.findViewById(R.id.shmrpd_list);
         fab.setOnClickListener(this);
         showDonors();
         return frame;
@@ -75,6 +78,7 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
         mDatabase.child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                fab.setVisibility(View.VISIBLE);
                 User mUser = snapshot.getValue(User.class);
                 if (mUser!=null) {
                     loadDonorList(mUser.getBgroup(), mUser.getThana(), mUser.getDistrict());
@@ -94,6 +98,8 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
         mDatabase.child("users").orderByChild("thana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
+                shimmerDonors.stopShimmer();
+                shimmerDonors.setVisibility(View.GONE);
                 for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
                     User mUser = snapshot.getValue(User.class);
                     if (mUser!=null && mUser.getBgroup().equals(bgroup) && mUser.isDonor() && !mUser.getId().equals(mAuth.getUid())) {
