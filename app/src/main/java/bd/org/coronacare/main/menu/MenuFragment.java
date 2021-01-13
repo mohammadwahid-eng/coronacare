@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +49,9 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
     private NavigationView about;
     private NavigationView logout;
 
+    private ShimmerFrameLayout shimmerCUWrapper;
+    private RelativeLayout cuWrapper;
+
     public MenuFragment() {
         // Required empty public constructor
     }
@@ -65,6 +70,9 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         emergency = frame.findViewById(R.id.menu_emergency);
         about = frame.findViewById(R.id.menu_about);
         logout = frame.findViewById(R.id.menu_logout);
+
+        cuWrapper = frame.findViewById(R.id.mcu_wrapper);
+        shimmerCUWrapper = frame.findViewById(R.id.shmrmcu_wrapper);
 
         for (int i=0;i<2;i++) {
             account.getMenu().getItem(i).setActionView(R.layout.layout_menu_end_icon);
@@ -91,6 +99,10 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                shimmerCUWrapper.stopShimmer();
+                shimmerCUWrapper.setVisibility(View.GONE);
+                cuWrapper.setVisibility(View.VISIBLE);
+
                 User user = snapshot.getValue(User.class);
                 if (user!=null) {
                     currentUserName.setText(user.getName());
