@@ -6,4 +6,21 @@
     <color name="colorAccent">#C5DAD5</color>
     <color name="colorText">#585858</color>
     <color name="colorFieldBG">#F9F9F9</color>
+
+
+    <color name="colorGrBackground">#C5DAD5</color>
+    <color name="colorGrPatientSkin">#FFC5A0</color>
+    <color name="colorGrPatientHair">#312A3C</color>
+    <color name="colorGrPatientTop">#7BBAB1</color>
+    <color name="colorGrPatientBottom">#7BBAB1</color>
+    <color name="colorGrPatientShoe">#7BBAB1</color>
+
+    <color name="colorGrDoctorSkin">#FFD19F</color>
+    <color name="colorGrDoctorHair">#2E3749</color>
+    <color name="colorGrDoctorTop">#7BBAB1</color>
+    <color name="colorGrDoctorApron">#F0FCFF</color>
+    <color name="colorGrDoctorBottom">#002A32</color>
+    <color name="colorGrDoctorShoe">#35302D</color>
+
+
 </resources>
