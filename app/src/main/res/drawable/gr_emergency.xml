@@ -368,19 +368,19 @@
         android:fillColor="@color/colorGrDoctorSkin"/>
     <path
         android:pathData="M201.928,454.767l-1.708,5.999h-11.313c-1.947,0 -3.526,-1.578 -3.526,-3.526v-11.803l-5.784,-7.52l7.638,-7.443l0.378,24.292H201.928z"
-        android:fillColor="#E8DFCF"/>
+        android:fillColor="@color/colorGrDoctorShoe"/>
     <path
         android:pathData="M179.598,437.918l0,22.848l3.977,-20.315z"
-        android:fillColor="#E8DFCF"/>
+        android:fillColor="@color/colorGrDoctorShoe"/>
     <path
         android:pathData="M126.713,436.069l0,17.508l10.962,1.19l-14.315,0l-0.895,-10.708l-5.054,-6.628l5.571,-6.956z"
         android:fillColor="@color/colorGrDoctorSkin"/>
     <path
         android:pathData="M137.675,454.767l-1.708,5.999h-11.313c-1.947,0 -3.526,-1.578 -3.526,-3.526v-11.803l-5.784,-7.52l7.638,-7.443l0.378,24.292H137.675z"
-        android:fillColor="#E8DFCF"/>
+        android:fillColor="@color/colorGrDoctorShoe"/>
     <path
         android:pathData="M115.344,437.918l0,22.848l3.978,-20.315z"
-        android:fillColor="#E8DFCF"/>
+        android:fillColor="@color/colorGrDoctorShoe"/>
     <path
         android:pathData="M112.688,460.766H76.934c-5.662,0 -10.252,-4.59 -10.252,-10.252V276.747h56.257v173.767C122.939,456.176 118.349,460.766 112.688,460.766z"
         android:fillColor="#E8DFCF"/>
