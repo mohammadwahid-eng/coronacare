@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -44,6 +45,7 @@ public class DoctorsActivity extends AppCompatActivity implements View.OnClickLi
     private List<User> doctors = new ArrayList<>();
     private DoctorAdapter adapter;
     private FloatingActionButton fab;
+    private ShimmerFrameLayout shimmerDoctors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class DoctorsActivity extends AppCompatActivity implements View.OnClickLi
         doctorList = findViewById(R.id.doc_list);
         fab = findViewById(R.id.doc_fab);
         fab.setOnClickListener(this);
+
+        shimmerDoctors = findViewById(R.id.shmrdoc_list);
 
         toolbar.setTitle("Nearby Doctors of You");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -99,6 +103,9 @@ public class DoctorsActivity extends AppCompatActivity implements View.OnClickLi
         mDatabase.child("users").orderByChild("doctor/hthana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
+                shimmerDoctors.stopShimmer();
+                shimmerDoctors.setVisibility(View.GONE);
+
                 for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
                     User mUser = snapshot.getValue(User.class);
                     if (mUser!=null && !mUser.getId().equals(mAuth.getUid())) {

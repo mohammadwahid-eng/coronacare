@@ -9,6 +9,33 @@
 
     <include layout="@layout/toolbar"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shmrdoc_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+            <include layout="@layout/layout_shimmer_search_doctor"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
