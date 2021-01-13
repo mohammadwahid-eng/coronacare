@@ -15,7 +15,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/qualification"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -30,7 +30,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/specializations"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/experience"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/fee"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/practice_time"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -94,7 +94,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/offdays"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -110,7 +110,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/hospital_name"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -126,7 +126,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/hospital_thana"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -142,7 +142,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/hospital_district"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -158,7 +158,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@string/hospital_mobile"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"

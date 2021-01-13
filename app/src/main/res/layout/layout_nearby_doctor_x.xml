@@ -29,7 +29,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/hdr_name"
                     android:text="@string/minus"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
                     android:maxLines="1"
                     android:ellipsize="end"

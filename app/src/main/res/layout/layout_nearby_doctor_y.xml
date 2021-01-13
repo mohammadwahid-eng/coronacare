@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

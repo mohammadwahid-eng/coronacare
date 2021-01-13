@@ -21,7 +21,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/name"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -57,7 +57,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/address"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -104,7 +104,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/mobile_number"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -151,7 +151,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/website"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

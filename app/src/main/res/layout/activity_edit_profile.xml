@@ -42,7 +42,7 @@
                     android:layout_marginStart="-32dp"
                     android:layout_marginBottom="4dp"
                     android:scaleType="centerInside"
-                    app:civ_circle_color="@color/colorPrimaryDark"
+                    app:civ_circle_color="@color/colorPrimary"
                     app:civ_border_color="@android:color/white"
                     app:civ_border_width="1dp"
                     app:tint="@android:color/white"

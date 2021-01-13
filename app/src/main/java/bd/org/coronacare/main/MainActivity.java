@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.bn_chat:
                 fragment = new ChatFragment();
-                title = "Chats";
+                title = "Chat Room";
                 break;
             case R.id.bn_menu:
                 fragment = new MenuFragment();

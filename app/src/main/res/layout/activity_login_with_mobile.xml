@@ -30,7 +30,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/lwm_title"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"

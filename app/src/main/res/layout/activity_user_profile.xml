@@ -52,7 +52,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/full_name"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -67,7 +67,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/age"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/gender"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/blood_group"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/mobile_number"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/thana"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/district"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -163,7 +163,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/occupation"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
@@ -179,7 +179,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/last_active"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"

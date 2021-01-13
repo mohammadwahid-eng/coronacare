@@ -15,7 +15,7 @@
         android:id="@+id/emrg_name"
         android:text="@string/minus"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:layout_marginStart="16dp"
         android:layout_weight="1"
         android:layout_width="0dp"
