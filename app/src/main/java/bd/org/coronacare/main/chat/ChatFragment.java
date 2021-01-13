@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -52,6 +53,8 @@ public class ChatFragment extends Fragment {
     private ChatsAdapter adapter;
     private List<User> users = new ArrayList<>();
 
+    private ShimmerFrameLayout shimmerChatUsers;
+
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -64,6 +67,7 @@ public class ChatFragment extends Fragment {
         mDatabase.keepSynced(true);
 
         chatUserList = frame.findViewById(R.id.chtu_list);
+        shimmerChatUsers = frame.findViewById(R.id.shmrchtu_list);
         showChatUsers();
         return frame;
     }
@@ -95,6 +99,14 @@ public class ChatFragment extends Fragment {
         chatUserList.addItemDecoration(new DividerItemDecorator(getActivity().getResources().getDrawable(R.drawable.gr_line_horizontal)));
         chatUserList.setHasFixedSize(true);
         chatUserList.setAdapter(adapter);
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                shimmerChatUsers.stopShimmer();
+                shimmerChatUsers.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override

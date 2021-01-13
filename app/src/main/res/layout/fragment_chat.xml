@@ -7,6 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".main.chat.ChatFragment">
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shmrchtu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+            <include layout="@layout/layout_shimmer_chat_user"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chtu_list"
         android:layout_width="match_parent"
