@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,6 +50,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private RecyclerView doctorList;
     private List<User> doctors = new ArrayList<>();
 
+    private RelativeLayout cuWrapper;
+    private ShimmerFrameLayout shimmerDoctor;
+    private ShimmerFrameLayout shimmerCUWrapper;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -66,6 +71,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         currentUserPhoto = frame.findViewById(R.id.hcu_photo);
         seeAllBtn = frame.findViewById(R.id.hdr_see_all);
 
+        cuWrapper = frame.findViewById(R.id.hcu_wrapper);
+
+        shimmerDoctor = frame.findViewById(R.id.shmrhdr_list);
+        shimmerCUWrapper = frame.findViewById(R.id.shmrhcu_wrapper);
+
         seeAllBtn.setOnClickListener(this);
 
         updateUI(mAuth.getCurrentUser());
@@ -78,6 +88,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                shimmerCUWrapper.stopShimmer();
+                shimmerCUWrapper.setVisibility(View.GONE);
+                cuWrapper.setVisibility(View.VISIBLE);
+
                 User mUser = snapshot.getValue(User.class);
                 if (mUser!=null) {
                     Picasso.get().load(mUser.getPhoto()).placeholder(R.drawable.gr_avatar).into(currentUserPhoto);
@@ -118,6 +132,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mDatabase.child("users").orderByChild("doctor/hthana").equalTo(thana).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataThanaSnapshot) {
+                shimmerDoctor.stopShimmer();
+                shimmerDoctor.setVisibility(View.GONE);
                 doctors.clear();
                 int x = 0;
                 for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
