@@ -40,7 +40,7 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/AppTheme.Button.UnelevatedButton"
-            app:icon="@drawable/ic_mobile_16"
+            app:icon="@drawable/ic_mobile_12"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:iconSize="16dp"

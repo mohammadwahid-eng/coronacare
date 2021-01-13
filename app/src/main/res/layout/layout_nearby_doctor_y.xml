@@ -56,6 +56,9 @@
             android:maxLines="1"
             android:textStyle="bold"
             android:layout_marginTop="2dp"
+            android:drawableStart="@drawable/ic_hospital_12"
+            android:drawableTint="@android:color/secondary_text_light_nodisable"
+            android:drawablePadding="4dp"
             android:ellipsize="end"
             android:textColor="@android:color/secondary_text_light_nodisable"
             android:layout_width="match_parent"
@@ -65,7 +68,7 @@
 
     <ImageView
         android:id="@+id/doc_item_icon"
-        android:src="@drawable/ic_arrow_right_16"
+        android:src="@drawable/ic_angle_right_16"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"

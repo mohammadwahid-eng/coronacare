@@ -73,7 +73,7 @@
 
         <ImageView
             android:id="@+id/emrgni_address"
-            android:src="@drawable/ic_arrow_right_16"
+            android:src="@drawable/ic_angle_right_16"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="16dp"
@@ -120,7 +120,7 @@
 
         <ImageView
             android:id="@+id/emrgni_mobile"
-            android:src="@drawable/ic_arrow_right_16"
+            android:src="@drawable/ic_angle_right_16"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="16dp"
@@ -167,7 +167,7 @@
 
         <ImageView
             android:id="@+id/emrgni_website"
-            android:src="@drawable/ic_arrow_right_16"
+            android:src="@drawable/ic_angle_right_16"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="16dp"

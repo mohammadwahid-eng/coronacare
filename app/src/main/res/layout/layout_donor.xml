@@ -43,7 +43,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/plsmd_mobile"
             android:text="@string/minus"
-            android:drawableStart="@drawable/ic_mobile_16"
+            android:drawableStart="@drawable/ic_mobile_12"
             android:drawableTint="@android:color/secondary_text_light_nodisable"
             android:drawablePadding="4dp"
             android:textSize="12sp"
@@ -57,7 +57,7 @@
 
     <ImageView
         android:id="@+id/plsmd_item_icon"
-        android:src="@drawable/ic_arrow_right_16"
+        android:src="@drawable/ic_angle_right_16"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"

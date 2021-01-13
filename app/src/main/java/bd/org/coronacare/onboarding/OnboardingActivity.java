@@ -146,9 +146,9 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
             title.setText(onboardings.get(position).getTitle());
             description.setText(onboardings.get(position).getDesc());
 
-            ColorMatrix matrix = new ColorMatrix();
-            matrix.setSaturation(0);
-            photo.setColorFilter(new ColorMatrixColorFilter(matrix));
+//            ColorMatrix matrix = new ColorMatrix();
+//            matrix.setSaturation(0);
+//            photo.setColorFilter(new ColorMatrixColorFilter(matrix));
 
             photo.setImageResource(onboardings.get(position).getPhoto());
             container.addView(page);

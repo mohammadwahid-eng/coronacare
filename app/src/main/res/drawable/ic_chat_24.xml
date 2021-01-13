@@ -1,6 +1,18 @@
-<vector android:height="24dp" android:viewportHeight="373.232"
-    android:viewportWidth="373.232" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-  <path android:fillColor="#FF000000" android:pathData="M187.466,0c-0.1,0.1 -0.3,0.1 -0.6,0.1c-101.2,0 -183.5,82.3 -183.5,183.5c0,41.3 14.1,81.4 39.9,113.7l-26.7,62c-2.2,5.1 0.2,11 5.2,13.1c1.8,0.8 3.8,1 5.7,0.7l97.9,-17.2c19.6,7.1 40.2,10.7 61,10.6c101.2,0 183.5,-82.3 183.5,-183.5C370.066,82.1 288.366,0.1 187.466,0zM186.466,346.6c-19.3,0 -38.4,-3.5 -56.5,-10.3c-1.7,-0.7 -3.5,-0.8 -5.3,-0.5l-82.4,14.4l21.8,-50.7c1.5,-3.5 0.9,-7.6 -1.6,-10.5c-11.8,-13.7 -21.2,-29.3 -27.8,-46.2c-7.4,-18.9 -11.2,-39 -11.2,-59.3c0,-90.2 73.4,-163.5 163.5,-163.5c89.9,-0.2 162.9,72.5 163,162.4c0,0.2 0,0.4 0,0.6C349.966,273.3 276.566,346.6 186.466,346.6z"/>
-  <path android:fillColor="#FF000000" android:pathData="M178.666,146.7h-54c-5.5,0 -10,4.5 -10,10s4.5,10 10,10h54c5.5,0 10,-4.5 10,-10S184.166,146.7 178.666,146.7z"/>
-  <path android:fillColor="#FF000000" android:pathData="M248.666,196.7h-124c-5.5,0 -10,4.5 -10,10s4.5,10 10,10h124c5.5,0 10,-4.5 10,-10S254.166,196.7 248.666,196.7z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M24,11.247A12.012,12.012 0,1 0,12.017 24H19a5.005,5.005 0,0 0,5 -5V11.247ZM22,19a3,3 0,0 1,-3 3H12.017a10.041,10.041 0,0 1,-7.476 -3.343,9.917 9.917,0 0,1 -2.476,-7.814 10.043,10.043 0,0 1,8.656 -8.761A10.564,10.564 0,0 1,12.021 2,9.921 9.921,0 0,1 18.4,4.3 10.041,10.041 0,0 1,22 11.342Z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M8,9h4a1,1 0,0 0,0 -2H8A1,1 0,0 0,8 9Z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M16,11H8a1,1 0,0 0,0 2h8a1,1 0,0 0,0 -2Z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M16,15H8a1,1 0,0 0,0 2h8a1,1 0,0 0,0 -2Z"/>
 </vector>

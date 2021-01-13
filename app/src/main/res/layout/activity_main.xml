@@ -22,6 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
+        app:itemIconSize="20dp"
         app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

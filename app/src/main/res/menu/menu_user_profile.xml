@@ -4,7 +4,7 @@
     <item
         android:id="@+id/mnuu_call"
         android:enabled="true"
-        android:icon="@drawable/ic_call_24"
+        android:icon="@drawable/ic_call_18"
         app:showAsAction="always"
         android:title="@string/call"/>
 </menu>

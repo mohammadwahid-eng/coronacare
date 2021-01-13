@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 
@@ -43,7 +44,7 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
     private TextInputEditText runnyNose;
     private TextInputEditText diarrhea;
     private TextInputEditText contactWithPatient;
-    private MaterialButton contBtn;
+    private ExtendedFloatingActionButton chkBtn;
 
     public AnalysisFragment() {
         // Required empty public constructor
@@ -62,7 +63,7 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
         runnyNose = frame.findViewById(R.id.rska_runny_nose);
         diarrhea = frame.findViewById(R.id.rska_diarrhea);
         contactWithPatient = frame.findViewById(R.id.rska_contact_with_patient);
-        contBtn = frame.findViewById(R.id.rska_cont_btn);
+        chkBtn = frame.findViewById(R.id.rska_btn);
 
 
         fever.setOnClickListener(this);
@@ -75,7 +76,7 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
         runnyNose.setOnClickListener(this);
         diarrhea.setOnClickListener(this);
         contactWithPatient.setOnClickListener(this);
-        contBtn.setOnClickListener(this);
+        chkBtn.setOnClickListener(this);
         return frame;
     }
 
@@ -111,7 +112,7 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
             DataPicker.chooseAnOption(getActivity(), diarrhea, new String[] {"Yes", "No"});
         } else if(v.equals(contactWithPatient)) {
             DataPicker.chooseAnOption(getActivity(), contactWithPatient, new String[] {"Yes", "No", "Don't know"});
-        } else if(v.equals(contBtn)) {
+        } else if(v.equals(chkBtn)) {
             if (TextUtils.isEmpty(fever.getText()) || TextUtils.isEmpty(tiredness.getText()) || TextUtils.isEmpty(dryCough.getText()) || TextUtils.isEmpty(breathing.getText()) || TextUtils.isEmpty(soreThroat.getText()) || TextUtils.isEmpty(pains.getText()) || TextUtils.isEmpty(nasalCongestion.getText()) || TextUtils.isEmpty(runnyNose.getText()) || TextUtils.isEmpty(diarrhea.getText()) || TextUtils.isEmpty(contactWithPatient.getText())) {
                 Toast.makeText(getActivity(), "All fields are required", Toast.LENGTH_SHORT).show();
             } else {

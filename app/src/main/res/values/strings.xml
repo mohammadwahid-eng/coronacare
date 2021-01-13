@@ -18,7 +18,7 @@
     <string name="dry_cough">Dry Cough</string>
     <string name="tiredness">Tiredness</string>
     <string name="fever">Fever</string>
-    <string name="rska_note">Please provide the following information\nof your\'s last 14 days</string>
+    <string name="rska_note">Please provide the following information of your\'s last 14 days to calculate the risk assessment of corona positive</string>
     <string name="account">Account</string>
     <string name="emergency">Emergency</string>
     <string name="about">About</string>
@@ -127,4 +127,5 @@
     <string name="analysis_desc">COVID-19 risk assessment by symptoms</string>
     <string name="plasma_management_desc">Search plasma donors nearby you</string>
     <string name="emergency_desc">Situation out of control? call hotlines</string>
+    <string name="check_now">Check Now</string>
 </resources>

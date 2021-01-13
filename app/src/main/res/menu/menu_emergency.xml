@@ -3,13 +3,16 @@
     <item
         android:id="@+id/mnue_dc"
         android:enabled="true"
+        android:icon="@drawable/ic_hospital_12"
         android:title="@string/diagnostic_centers"/>
     <item
         android:id="@+id/mnue_hotlines"
         android:enabled="true"
+        android:icon="@drawable/ic_call_18"
         android:title="@string/hotlines"/>
     <item
         android:id="@+id/mnue_ambulance"
         android:enabled="true"
+        android:icon="@drawable/ic_ambulance_24"
         android:title="@string/ambulance"/>
 </menu>

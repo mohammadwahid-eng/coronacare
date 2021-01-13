@@ -1,359 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.analysis.AnalysisFragment">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:textColor="@color/colorText"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:text="@string/rska_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <RelativeLayout
-            android:layout_marginTop="24dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_fever"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/fever"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@color/colorText"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/rska_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_tiredness"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_fever"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/fever"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/tiredness"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_dry_cough"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_tiredness"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/tiredness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/dry_cough"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_breathing"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_dry_cough"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/dry_cough"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/difficulty_in_breathing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_sore_throat"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_breathing"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/difficulty_in_breathing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/sore_throat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_pains"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_sore_throat"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/sore_throat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/pains"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_nasal_congestion"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_pains"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/pains"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/nasal_congestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_runny_nose"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_nasal_congestion"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/nasal_congestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/runny_nose"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_diarrhea"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_runny_nose"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/runny_nose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/diarrhea"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/AppTheme.TextInputLayout"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/AppTheme.TextInputEditText"
-                    android:id="@+id/rska_contact_with_patient"
-                    android:hint="@string/choose_an_option"
-                    android:inputType="textPhonetic"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_diarrhea"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/diarrhea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/AppTheme.TextInputLabel"
-                android:text="@string/contact_with_patient"
+            <RelativeLayout
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/AppTheme.Button.UnelevatedButton"
-            android:id="@+id/rska_cont_btn"
-            app:cornerRadius="24dp"
-            android:text="@string/text_continue"
-            android:paddingVertical="20dp"
-            android:minWidth="250dp"
-            android:layout_marginBottom="16dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/AppTheme.TextInputEditText"
+                        android:id="@+id/rska_contact_with_patient"
+                        android:hint="@string/choose_an_option"
+                        android:inputType="textPhonetic"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:cursorVisible="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.core.widget.NestedScrollView>
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AppTheme.TextInputLabel"
+                    android:text="@string/contact_with_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/rska_btn"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/app_name"
+        app:backgroundTint="@color/colorPrimary"
+        android:text="@string/check_now"
+        android:textAllCaps="false"
+        app:icon="@drawable/ic_check_24"
+        app:iconTint="@android:color/white"
+        app:iconSize="16dp"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
