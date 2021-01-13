@@ -82,7 +82,7 @@
             android:fillColor="#6BA491"/>
         <path
             android:pathData="M179.364,105.606c0,0 53.602,-0.298 69.57,11.79l0.91,5.433l-69.608,-12.014L179.364,105.606z"
-            android:fillColor="#312A3C"/>
+            android:fillColor="@color/colorGrDoctorHair"/>
         <group>
             <clip-path
                 android:pathData="M180.236,110.814l-8.585,83.07c0,0 60.763,13.197 72.117,6.121c6.464,-4.028 6.075,-77.177 6.075,-77.177L180.236,110.814z"/>
