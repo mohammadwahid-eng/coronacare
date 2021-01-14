@@ -29,20 +29,21 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/hdr_name"
                     android:text="@string/minus"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:textFontWeight="600"
+                    android:textColor="@color/colorSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/hdr_qualification"
                     android:text="@string/minus"
+                    android:textSize="12sp"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/darker_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -67,7 +68,8 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/gr_avatar"
         app:civ_border_width="4dp"
-        app:civ_border_color="@color/colorFieldBG"
+        app:civ_border_color_end="#1A000000"
+        app:civ_border_color_direction="top_to_bottom"
         android:layout_width="80dp"
         android:layout_height="80dp"/>
 

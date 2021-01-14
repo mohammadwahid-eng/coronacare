@@ -10,9 +10,9 @@
     <include layout="@layout/toolbar"/>
 
     <RelativeLayout
+        android:background="@color/colorBackground"
         android:padding="16dp"
         android:minHeight="100dp"
-        android:background="@color/colorFieldBG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,6 +23,8 @@
             android:layout_alignParentStart="true"
             app:civ_border_color="#f6f6f6"
             app:civ_border_width="4dp"
+            app:civ_border_color_end="#1A000000"
+            app:civ_border_color_direction="top_to_bottom"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
 
@@ -38,8 +40,8 @@
                 android:id="@+id/dp_name"
                 android:text="@string/minus"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorSecondary"
+                android:textFontWeight="600"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

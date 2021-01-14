@@ -14,20 +14,23 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/gr_avatar"
-        app:civ_border="false"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        app:civ_border_width="4dp"
+        app:civ_border_color_end="#1A000000"
+        app:civ_border_color_direction="top_to_bottom"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/chtu_activity"
         android:src="@drawable/ic_circle_solid_24"
         android:layout_toEndOf="@id/chtu_photo"
         android:layout_alignBottom="@id/chtu_photo"
-        android:layout_marginStart="-16dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginBottom="2dp"
         app:civ_border_width="2dp"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:tint="@color/cardview_shadow_start_color"/>
+        android:tint="#C8C8C8"/>
 
     <LinearLayout
         android:layout_marginStart="16dp"
@@ -42,10 +45,10 @@
             android:id="@+id/chtu_name"
             android:text="@string/minus"
             android:textSize="16sp"
-            android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorSecondary"
+            android:textFontWeight="600"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -55,7 +58,7 @@
             android:textSize="12sp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@android:color/secondary_text_light_nodisable"
+            android:textColor="@color/material_on_surface_disabled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -77,7 +80,7 @@
             android:textSize="12sp"
             android:maxLines="1"
             android:textAlignment="textEnd"
-            android:textColor="@android:color/secondary_text_light_nodisable"
+            android:textColor="@color/material_on_surface_disabled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

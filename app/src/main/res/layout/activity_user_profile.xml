@@ -20,15 +20,17 @@
 
             <FrameLayout
                 android:background="@drawable/gr_circle"
-                android:backgroundTint="@color/colorFieldBG"
+                android:backgroundTint="@color/colorBackground"
                 android:scaleX="1.5"
                 android:scaleY="2"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+                android:layout_height="120dp"/>
 
             <RelativeLayout
-                android:layout_marginTop="-150dp"
-                android:paddingVertical="48dp"
+                android:layout_marginTop="-120dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="16dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -38,6 +40,8 @@
                     android:layout_centerHorizontal="true"
                     app:civ_border_color="#f6f6f6"
                     app:civ_border_width="8dp"
+                    app:civ_border_color_end="#1A000000"
+                    app:civ_border_color_direction="top_to_bottom"
                     android:layout_width="130dp"
                     android:layout_height="130dp"/>
 
@@ -51,24 +55,22 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/full_name"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_name"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/age"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -76,15 +78,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_age"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/gender"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -92,15 +93,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_gender"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/blood_group"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -108,15 +108,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_bgroup"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/mobile_number"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -124,15 +123,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_mobile"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/thana"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -140,15 +138,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_thana"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/district"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -156,15 +153,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_district"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/occupation"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -172,15 +168,14 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_occupation"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/last_active"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -188,7 +183,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/up_last_active"
                     android:text="@string/minus"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/material_on_surface_disabled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

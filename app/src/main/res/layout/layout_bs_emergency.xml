@@ -21,15 +21,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/name"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
+                android:textFontWeight="600"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emrg_place_name"
                 android:text="@string/minus"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/material_on_surface_disabled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -57,15 +57,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/address"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
+                android:textFontWeight="600"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emrg_address"
                 android:text="@string/minus"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/material_on_surface_disabled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -104,15 +104,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/mobile_number"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
+                android:textFontWeight="600"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emrg_mobile"
                 android:text="@string/minus"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/material_on_surface_disabled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -151,15 +151,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/website"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
+                android:textFontWeight="600"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emrg_website"
                 android:text="@string/minus"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/material_on_surface_disabled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

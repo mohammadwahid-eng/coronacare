@@ -22,7 +22,8 @@
             <ImageView
                 android:src="@drawable/gr_mobile_sms"
                 android:layout_gravity="center"
-                android:layout_marginVertical="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:contentDescription="@string/app_name" />
@@ -30,9 +31,9 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/lwm_title"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -40,13 +41,13 @@
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/lwm_desc"
                 android:textAlignment="center"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorSecondary"
                 android:layout_marginBottom="48dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <RelativeLayout
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

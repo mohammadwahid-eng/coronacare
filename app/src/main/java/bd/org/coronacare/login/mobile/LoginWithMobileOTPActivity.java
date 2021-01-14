@@ -115,12 +115,12 @@ public class LoginWithMobileOTPActivity extends AppCompatActivity implements Vie
     private void showCountDownTimer() {
         new CountDownTimer(60000, 1000) {
             public void onTick(long millisUntilFinished) {
-                resendBtn.setTextColor(getResources().getColor(android.R.color.darker_gray));
+                resendBtn.setTextColor(getResources().getColor(R.color.colorSecondary));
                 resendBtn.setEnabled(false);
                 resendBtn.setText("Wait " + millisUntilFinished/1000 + "s");
             }
             public void onFinish() {
-                resendBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
+                resendBtn.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 resendBtn.setEnabled(true);
                 resendBtn.setText(getString(R.string.resend_code));
             }

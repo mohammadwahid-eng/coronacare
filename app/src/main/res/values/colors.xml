@@ -3,13 +3,15 @@
     <color name="colorPrimary">#325A51</color>
     <color name="colorPrimaryDark">#053029</color>
     <color name="colorPrimaryLight">#5e877d</color>
+    <color name="colorSecondary">#33445B</color>
     <color name="colorAccent">#C5DAD5</color>
-    <color name="colorText">#585858</color>
-    <color name="colorFieldBG">#F9F9F9</color>
+
+
+    <color name="colorBackground">#FAFAFA</color>
+
 
 
     <color name="colorGrBackground">#CEEBE7</color>
-
     <color name="colorGrPatientSkin">#FFC5A0</color>
     <color name="colorGrPatientHair">#312A3C</color>
     <color name="colorGrPatientTop">@color/colorPrimaryLight</color>

@@ -34,11 +34,10 @@
             android:paddingVertical="8dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:textStyle="bold"
             android:minLines="3"
             android:maxLines="3"
+            android:textColor="@color/colorSecondary"
             android:justificationMode="inter_word"
-            android:textColor="@android:color/black"
             android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

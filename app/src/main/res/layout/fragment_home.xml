@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorFieldBG"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.home.HomeFragment">
 
@@ -41,8 +41,8 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:text="@string/welcome"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorSecondary"
+                    android:textFontWeight="600"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -50,9 +50,10 @@
                     android:id="@+id/hcu_name"
                     android:text="@string/minus"
                     android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textColor="@color/colorText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -76,9 +77,9 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:text="@string/common_prevention_tips"
-                android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textColor="@color/colorSecondary"
                 android:paddingHorizontal="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -87,7 +88,7 @@
                 android:text="@string/protect_yourself_and_others"
                 android:layout_marginBottom="8dp"
                 android:paddingHorizontal="16dp"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorSecondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -114,9 +115,9 @@
                     android:id="@+id/hdr_nearby_you"
                     android:text="@string/doctors_nearby_you"
                     android:layout_toStartOf="@id/hdr_see_all"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorSecondary"
                     android:paddingHorizontal="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -125,8 +126,8 @@
                     android:text="@string/consult_with_them_from_home"
                     android:layout_below="@id/hdr_nearby_you"
                     android:paddingHorizontal="16dp"
+                    android:textColor="@color/colorSecondary"
                     android:layout_toStartOf="@id/hdr_see_all"
-                    android:textColor="@color/colorText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -135,9 +136,9 @@
                     android:text="@string/see_all"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     android:paddingHorizontal="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

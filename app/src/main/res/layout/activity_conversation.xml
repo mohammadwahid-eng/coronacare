@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:id="@+id/conv_footer"
-            android:background="@color/colorFieldBG"
+            android:background="@color/colorBackground"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:orientation="horizontal"

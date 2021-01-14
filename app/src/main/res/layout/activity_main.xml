@@ -24,6 +24,8 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconSize="20dp"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_navigation_icon"
+        app:itemTextColor="@color/bottom_navigation_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

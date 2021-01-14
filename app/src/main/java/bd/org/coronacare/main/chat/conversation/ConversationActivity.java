@@ -114,6 +114,7 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                 finish();
             }
         });
+
         photoBtn.setOnClickListener(this);
         sendBtn.setOnClickListener(this);
         fetchUserMeta();

@@ -24,8 +24,8 @@
     <com.google.android.material.textview.MaterialTextView
         android:text="@string/continue_with"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
         android:textStyle="bold"
+        android:textSize="24sp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="235dp"/>
@@ -40,11 +40,11 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/AppTheme.Button.UnelevatedButton"
+            android:id="@+id/lgm_btn"
             app:icon="@drawable/ic_mobile_12"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:iconSize="16dp"
-            android:id="@+id/lgm_btn"
             android:text="@string/mobile_number"
             android:paddingVertical="20dp"
             app:cornerRadius="24dp"

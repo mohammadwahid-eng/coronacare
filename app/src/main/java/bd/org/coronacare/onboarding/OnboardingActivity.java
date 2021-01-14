@@ -65,7 +65,7 @@ public class OnboardingActivity extends AppCompatActivity implements View.OnClic
         onbrdings.add(new Onboarding(getString(R.string.search_doctors), getString(R.string.search_doctors_desc), R.drawable.gr_doctors));
         onbrdings.add(new Onboarding(getString(R.string.online_consultation), getString(R.string.online_consultation_desc), R.drawable.gr_consultation));
         onbrdings.add(new Onboarding(getString(R.string.book_appointment), getString(R.string.book_appointment_desc), R.drawable.gr_appointment));
-        onbrdings.add(new Onboarding(getString(R.string.analysis), getString(R.string.analysis_desc), R.drawable.gr_analysis));
+        onbrdings.add(new Onboarding(getString(R.string.risk_assessment), getString(R.string.risk_assessment_desc), R.drawable.gr_analysis));
         onbrdings.add(new Onboarding(getString(R.string.plasma_management), getString(R.string.plasma_management_desc), R.drawable.gr_plasma));
         onbrdings.add(new Onboarding(getString(R.string.emergency), getString(R.string.emergency_desc), R.drawable.gr_emergency));
 

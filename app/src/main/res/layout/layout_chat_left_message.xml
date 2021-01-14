@@ -23,7 +23,7 @@
         android:layout_toEndOf="@id/convl_uphoto"
         android:layout_marginStart="8dp"
         android:background="@drawable/bg_chat_left"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorSecondary"
         android:paddingVertical="8dp"
         android:paddingHorizontal="16dp"
         android:textSize="14sp"

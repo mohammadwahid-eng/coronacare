@@ -25,14 +25,15 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dpfu_name"
             android:text="@string/minus"
-            android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorSecondary"
+            android:textFontWeight="600"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <RelativeLayout
+            android:layout_marginVertical="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -43,7 +44,7 @@
                 android:layout_toStartOf="@id/dpfu_rating"
                 android:layout_marginEnd="16dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/material_on_background_emphasis_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -64,7 +65,8 @@
             android:id="@+id/dpfu_comment"
             android:text="@string/minus"
             android:textSize="12sp"
-            android:textColor="@color/colorText"
+            android:justificationMode="inter_word"
+            android:textColor="@color/material_on_surface_disabled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
