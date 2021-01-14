@@ -8,12 +8,12 @@
     <color name="colorFieldBG">#F9F9F9</color>
 
 
-    <color name="colorGrBackground">#C5DAD5</color>
-    <color name="colorGrPatientSkin">#FFC5A0</color>
-    <color name="colorGrPatientHair">#312A3C</color>
-    <color name="colorGrPatientTop">#7BBAB1</color>
-    <color name="colorGrPatientBottom">#7BBAB1</color>
-    <color name="colorGrPatientShoe">#000</color>
+    <color name="colorGrBackground">#ff8000</color>
+    <color name="colorGrPatientSkin">#bfff00</color>
+    <color name="colorGrPatientHair">#0040ff</color>
+    <color name="colorGrPatientTop">#8000ff</color>
+    <color name="colorGrPatientBottom">#ff0000</color>
+    <color name="colorGrPatientShoe">#808080</color>
 
     <color name="colorGrDoctorSkin">#FFD19F</color>
     <color name="colorGrDoctorHair">#2E3749</color>
