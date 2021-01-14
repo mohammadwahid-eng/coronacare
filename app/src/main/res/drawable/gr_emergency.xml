@@ -51,37 +51,37 @@
             android:strokeWidth="1"
             android:pathData="M384.992,77.251c0,0 0.542,4.204 5.424,6.78"
             android:fillColor="#00000000"
-            android:strokeColor="#422E2D"/>
+            android:strokeColor="@color/colorGrPatientHair"/>
         <path
             android:strokeWidth="1"
             android:pathData="M366.613,77.989c0,0 3.143,1.038 5.814,-0.738"
             android:fillColor="#00000000"
-            android:strokeColor="#422E2D"/>
+            android:strokeColor="@color/colorGrPatientHair"/>
         <path
             android:pathData="M370.62,99.05c0,0 5.653,0.564 14.046,0c0,0 -4.268,5.242 -10.594,4.71C372.617,103.638 370.62,99.05 370.62,99.05z"
             android:fillColor="#FFFFFF"/>
         <path
             android:pathData="M382.955,87.534a1.71,3.09 0,1 0,3.42 0a1.71,3.09 0,1 0,-3.42 0z"
-            android:fillColor="#422E2D"/>
+            android:fillColor="@color/colorGrPatientHair"/>
         <path
             android:pathData="M367.669,85.625a1.71,3.09 0,1 0,3.42 0a1.71,3.09 0,1 0,-3.42 0z"
-            android:fillColor="#422E2D"/>
+            android:fillColor="@color/colorGrPatientHair"/>
         <path
             android:pathData="M374.785,87.534c0,0 -1.303,5.178 -7.4,4.783C367.384,92.317 375.1,102.196 374.785,87.534z"
             android:fillColor="#9A2532"/>
         <path
             android:pathData="M409.794,95.572c15.09,-18.049 20.834,-21.945 0,-36.397c0,0 -2.036,-13.727 -19.957,-9.308c-27.624,6.812 -22.55,9.308 -23.446,24.363c0,0 14.893,1.91 26.917,-5.116c0,0 0.418,8.46 5.364,12.779l-0.858,9.051L409.794,95.572z"
-            android:fillColor="#422E2D"/>
+            android:fillColor="@color/colorGrPatientHair"/>
         <path
             android:strokeWidth="1"
             android:pathData="M409.794,59.176c0,0 1.815,-3.786 0,-7.73"
             android:fillColor="#00000000"
-            android:strokeColor="#422E2D"/>
+            android:strokeColor="@color/colorGrPatientHair"/>
         <path
             android:strokeWidth="1"
             android:pathData="M408.575,61.255c0,0 6.562,-2.922 7.108,-5.945"
             android:fillColor="#00000000"
-            android:strokeColor="#422E2D"/>
+            android:strokeColor="@color/colorGrPatientHair"/>
         <path
             android:pathData="M412.566,96.527a9.102,7.07 110.713,1 0,-13.227 -5.001a9.102,7.07 110.713,1 0,13.227 5.001z"
             android:fillColor="#B14330"/>
@@ -189,7 +189,7 @@
         android:strokeWidth="1"
         android:pathData="M185.88,138.937c0,0 2.972,-1.547 5.374,0.536"
         android:fillColor="#00000000"
-        android:strokeColor="#422E2D"/>
+        android:strokeColor="@color/colorGrPatientHair"/>
     <path
         android:pathData="M152.143,148.137c0,0 25.133,-0.286 30.676,-22.22c0,0 3.824,0.656 9.094,6.574c0,0 -2.525,-12.962 -23.47,-12.962C147.082,119.529 152.143,148.137 152.143,148.137z"
         android:fillColor="@color/colorGrDoctorHair"/>
@@ -197,7 +197,7 @@
         android:strokeWidth="1"
         android:pathData="M182.429,124.271c0,0 4.139,17.081 -22.675,22.774"
         android:fillColor="#00000000"
-        android:strokeColor="#422E2D"/>
+        android:strokeColor="@color/colorGrPatientHair"/>
     <path
         android:pathData="M162.342,144.162c0,0 -4.129,13.06 2.088,25.467c0,0 -20.417,2.671 -33.878,-12.408c-0.331,-13.609 6.468,-26.814 15.015,-35.596c7.151,-7.347 27.465,-9.744 32.617,4.292C178.184,125.917 164.177,125.509 162.342,144.162z"
         android:fillColor="@color/colorGrDoctorHair"/>
@@ -205,21 +205,21 @@
         android:strokeWidth="1"
         android:pathData="M198.456,167.261c0,0 9.519,-26.653 -11.276,-44.518"
         android:fillColor="#00000000"
-        android:strokeColor="#422E2D"/>
+        android:strokeColor="@color/colorGrPatientHair"/>
     <path
         android:strokeWidth="1"
         android:pathData="M128.456,155.253c0,0 2.085,-41.251 37.489,-38.221"
         android:fillColor="#00000000"
-        android:strokeColor="#422E2D"/>
+        android:strokeColor="@color/colorGrPatientHair"/>
     <path
         android:pathData="M187.592,157.222c0,0 -4.969,0.496 -12.347,0c0,0 3.752,4.608 9.312,4.14C185.837,161.255 187.592,157.222 187.592,157.222z"
         android:fillColor="#FFFFFF"/>
     <path
         android:pathData="M173.743,147.098a1.503,2.717 0,1 0,3.006 0a1.503,2.717 0,1 0,-3.006 0z"
-        android:fillColor="#422E2D"/>
+        android:fillColor="@color/colorGrPatientHair"/>
     <path
         android:pathData="M187.179,145.421a1.503,2.717 0,1 0,3.006 0a1.503,2.717 0,1 0,-3.006 0z"
-        android:fillColor="#422E2D"/>
+        android:fillColor="@color/colorGrPatientHair"/>
     <path
         android:pathData="M183.931,147.098c0,0 1.146,4.551 6.505,4.205C190.436,151.303 183.654,159.987 183.931,147.098z"
         android:fillColor="@color/colorGrDoctorSkin"/>
