@@ -24,11 +24,13 @@ import bd.org.coronacare.R;
 public class DataPicker {
     public static void chooseAnOption(final Context context, final TextInputEditText field, final String[] options) {
         final StringBuilder selected = new StringBuilder();
+        selected.append(field.getText().toString());
         new MaterialAlertDialogBuilder(context, R.style.AppTheme_MaterialAlertDialog)
             .setTitle("Choose an option")
             .setSingleChoiceItems(options, Arrays.asList(options).indexOf(field.getText().toString()), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int position) {
+                    selected.setLength(0);
                     selected.append(options[position]);
                 }
             })

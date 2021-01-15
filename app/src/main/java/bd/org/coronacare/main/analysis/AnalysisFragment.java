@@ -28,8 +28,12 @@ import bd.org.coronacare.R;
 import bd.org.coronacare.utils.DataPicker;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class AnalysisFragment extends Fragment implements View.OnClickListener {
@@ -44,6 +48,8 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
     private TextInputEditText runnyNose;
     private TextInputEditText diarrhea;
     private TextInputEditText contactWithPatient;
+    private TextInputEditText age;
+    private TextInputEditText gender;
     private ExtendedFloatingActionButton chkBtn;
 
     public AnalysisFragment() {
@@ -63,6 +69,8 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
         runnyNose = frame.findViewById(R.id.rska_runny_nose);
         diarrhea = frame.findViewById(R.id.rska_diarrhea);
         contactWithPatient = frame.findViewById(R.id.rska_contact_with_patient);
+        age = frame.findViewById(R.id.rska_age);
+        gender = frame.findViewById(R.id.rska_gender);
         chkBtn = frame.findViewById(R.id.rska_btn);
 
 
@@ -76,18 +84,10 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
         runnyNose.setOnClickListener(this);
         diarrhea.setOnClickListener(this);
         contactWithPatient.setOnClickListener(this);
+        age.setOnClickListener(this);
+        gender.setOnClickListener(this);
         chkBtn.setOnClickListener(this);
         return frame;
-    }
-
-    private Integer processData(TextInputEditText field) {
-        if (field.getText().equals("Yes")) {
-            return 1;
-        } else if (field.getText().equals("No")) {
-            return 2;
-        } else {
-            return 3;
-        }
     }
 
     @Override
@@ -112,8 +112,12 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
             DataPicker.chooseAnOption(getActivity(), diarrhea, new String[] {"Yes", "No"});
         } else if(v.equals(contactWithPatient)) {
             DataPicker.chooseAnOption(getActivity(), contactWithPatient, new String[] {"Yes", "No", "Don't know"});
+        } else if(v.equals(age)) {
+            DataPicker.chooseAnOption(getActivity(), age, new String[] {"0 - 9", "10 - 19", "20 - 24", "25 - 59", "60+"});
+        } else if(v.equals(gender)) {
+            DataPicker.chooseAnOption(getActivity(), gender, new String[] {"Male", "Female", "Other"});
         } else if(v.equals(chkBtn)) {
-            if (TextUtils.isEmpty(fever.getText()) || TextUtils.isEmpty(tiredness.getText()) || TextUtils.isEmpty(dryCough.getText()) || TextUtils.isEmpty(breathing.getText()) || TextUtils.isEmpty(soreThroat.getText()) || TextUtils.isEmpty(pains.getText()) || TextUtils.isEmpty(nasalCongestion.getText()) || TextUtils.isEmpty(runnyNose.getText()) || TextUtils.isEmpty(diarrhea.getText()) || TextUtils.isEmpty(contactWithPatient.getText())) {
+            if (TextUtils.isEmpty(fever.getText()) || TextUtils.isEmpty(tiredness.getText()) || TextUtils.isEmpty(dryCough.getText()) || TextUtils.isEmpty(breathing.getText()) || TextUtils.isEmpty(soreThroat.getText()) || TextUtils.isEmpty(pains.getText()) || TextUtils.isEmpty(nasalCongestion.getText()) || TextUtils.isEmpty(runnyNose.getText()) || TextUtils.isEmpty(diarrhea.getText()) || TextUtils.isEmpty(contactWithPatient.getText()) || TextUtils.isEmpty(age.getText()) || TextUtils.isEmpty(gender.getText())) {
                 Toast.makeText(getActivity(), "All fields are required", Toast.LENGTH_SHORT).show();
             } else {
                 final ProgressDialog preLoader = new ProgressDialog(getActivity(), R.style.AppTheme_ProgressDialog);
@@ -121,33 +125,44 @@ public class AnalysisFragment extends Fragment implements View.OnClickListener {
                 preLoader.setCanceledOnTouchOutside(false);
                 preLoader.show();
 
-                OkHttpClient.Builder builder = new OkHttpClient.Builder();
-                builder.connectTimeout(30, TimeUnit.SECONDS);
-                builder.writeTimeout(30, TimeUnit.SECONDS);
-                builder.readTimeout(30, TimeUnit.SECONDS);
-                OkHttpClient client = builder.build();
+                OkHttpClient client = new OkHttpClient();
+                HttpUrl.Builder urlBuilder = HttpUrl.parse("https://corona-risk-assessment.herokuapp.com/prediction").newBuilder();
+                urlBuilder.addQueryParameter("fever", fever.getText().toString());
+                urlBuilder.addQueryParameter("tiredness", tiredness.getText().toString());
+                urlBuilder.addQueryParameter("dry_cough", dryCough.getText().toString());
+                urlBuilder.addQueryParameter("difficulty_in_breathing", breathing.getText().toString());
+                urlBuilder.addQueryParameter("sore_throat", soreThroat.getText().toString());
+                urlBuilder.addQueryParameter("pains", pains.getText().toString());
+                urlBuilder.addQueryParameter("nasal_congestion", nasalCongestion.getText().toString());
+                urlBuilder.addQueryParameter("runny_nose", runnyNose.getText().toString());
+                urlBuilder.addQueryParameter("diarrhea", diarrhea.getText().toString());
+                urlBuilder.addQueryParameter("contact_patient", contactWithPatient.getText().toString());
+                urlBuilder.addQueryParameter("age", age.getText().toString());
+                urlBuilder.addQueryParameter("gender", gender.getText().toString());
+                String url = urlBuilder.build().toString();
 
-                String url = "https://coronacare-diagnostic.herokuapp.com/?" + "fever=" + processData(fever) + "&tiredness=" + processData(tiredness) + "&dry_cough=" + processData(dryCough) + "&difficulty_in_breathing=" + processData(breathing) + "&sore_throat=" + processData(soreThroat) + "&pains=" + processData(pains) + "&nasal_congestion=" + processData(nasalCongestion) + "&runny_nose=" + processData(runnyNose) + "&diarrhea=" + processData(diarrhea) + "&contact_with_patient=" + processData(contactWithPatient);
                 Request request = new Request.Builder().url(url).build();
+
                 client.newCall(request).enqueue(new Callback() {
                     @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        preLoader.dismiss();
+                    public void onFailure(Call call, IOException e) {
+                        call.cancel();
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                preLoader.dismiss();
                                 Toast.makeText(getActivity(), "Failed to send request", Toast.LENGTH_LONG).show();
                             }
                         });
                     }
 
                     @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        preLoader.dismiss();
+                    public void onResponse(Call call, Response response) throws IOException {
                         if (response.isSuccessful()) {
                             try {
-                                JSONObject result = new JSONObject(response.body().string());
-                                startActivity(new Intent(getActivity(), AnalysisResultActivity.class).putExtra("SEVERITY", result.getString("severity")));
+                                JSONObject object = new JSONObject(response.body().string());
+                                preLoader.dismiss();
+                                startActivity(new Intent(getActivity(), AnalysisResultActivity.class).putExtra("SEVERITY", object.getString("result")));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
