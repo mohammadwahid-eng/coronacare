@@ -118,11 +118,17 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
         });
     }
 
-    private void doLogout() {
-        mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(false);
+    private void setStatus(boolean online) {
+        mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(online);
         mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
+    }
+
+    private void doLogout() {
+        setStatus(false);
         mAuth.signOut();
         Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), LoginOptionsActivity.class));
+        getActivity().finish();
     }
 
     @Override
@@ -147,8 +153,6 @@ public class MenuFragment extends Fragment implements NavigationView.OnNavigatio
             startActivity(new Intent(getActivity(), AboutActivity.class).putExtra("TYPE", "ABOUT_US"));
         } else if (item.getItemId() == R.id.mnu_logout) {
             doLogout();
-            startActivity(new Intent(getActivity(), LoginOptionsActivity.class));
-            getActivity().finish();
         }
         return true;
     }

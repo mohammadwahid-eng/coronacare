@@ -11,6 +11,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import bd.org.coronacare.R;
 import bd.org.coronacare.main.analysis.AnalysisFragment;
@@ -20,6 +24,9 @@ import bd.org.coronacare.main.menu.MenuFragment;
 import bd.org.coronacare.main.plasma.PlasmaFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
     private MaterialToolbar toolbar;
     private BottomNavigationView bottomNavigation;
 
@@ -27,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         toolbar = findViewById(R.id.toolbar);
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -95,6 +105,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             super.onBackPressed();
         } else {
             showHome();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setStatus(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setStatus(false);
+    }
+
+    private void setStatus(boolean online) {
+        if (mAuth.getUid()!=null) {
+            mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(online);
+            mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
         }
     }
 }
