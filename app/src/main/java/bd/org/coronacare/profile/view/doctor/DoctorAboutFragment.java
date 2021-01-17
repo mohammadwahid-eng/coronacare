@@ -66,7 +66,7 @@ public class DoctorAboutFragment extends Fragment {
     }
 
     private void loadDetails() {
-        mDatabase.child("users").child(doctorID).child("doctor").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users").child(doctorID).child("doctor").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Doctor mDoctor = snapshot.getValue(Doctor.class);

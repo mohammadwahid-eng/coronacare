@@ -300,6 +300,17 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
         adapter.stopListening();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setStatus(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        setStatus(false);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -319,6 +330,13 @@ public class ConversationActivity extends AppCompatActivity implements View.OnCl
                 e.printStackTrace();
             }
             uploadPhoto(bitmap);
+        }
+    }
+
+    private void setStatus(boolean online) {
+        if (mAuth.getUid()!=null) {
+            mDatabase.child("users").child(mAuth.getUid()).child("online").setValue(online);
+            mDatabase.child("users").child(mAuth.getUid()).child("lastOnline").setValue(ServerValue.TIMESTAMP);
         }
     }
 

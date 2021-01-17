@@ -86,7 +86,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void loadDonorData() {
-        mDatabase.child("users").child(userID).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
