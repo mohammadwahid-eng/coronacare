@@ -50,6 +50,7 @@ public class ChatFragment extends Fragment {
     private DatabaseReference mDatabase;
 
     private RecyclerView chatUserList;
+    private MaterialTextView not_found;
     private ChatsAdapter adapter;
     private List<User> users = new ArrayList<>();
 
@@ -67,6 +68,7 @@ public class ChatFragment extends Fragment {
         mDatabase.keepSynced(true);
 
         chatUserList = frame.findViewById(R.id.chtu_list);
+        not_found = frame.findViewById(R.id.chtu_nfound);
         shimmerChatUsers = frame.findViewById(R.id.shmrchtu_list);
         showChatUsers();
         return frame;

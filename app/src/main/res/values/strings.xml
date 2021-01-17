@@ -127,4 +127,5 @@
     <string name="check_now">Check Now</string>
     <string name="risk_assessment">Risk Assessment</string>
     <string name="risk_assessment_desc">Get COVID-19 risk assessment by symptoms</string>
+    <string name="no_content_found">Sorry no content found</string>
 </resources>

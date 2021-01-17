@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -42,6 +43,7 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
     private DatabaseReference mDatabase;
 
     private RecyclerView donorList;
+    private MaterialTextView not_found;
     private List<User> donors = new ArrayList<>();
     private DonorAdapter adapter;
 
@@ -61,6 +63,7 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
 
         View frame = inflater.inflate(R.layout.fragment_plasma, container, false);
         donorList = frame.findViewById(R.id.plsmd_list);
+        not_found = frame.findViewById(R.id.plsmd_nfound);
         fab = frame.findViewById(R.id.plsmd_fab);
         shimmerDonors = frame.findViewById(R.id.shmrpd_list);
         fab.setOnClickListener(this);
@@ -74,6 +77,19 @@ public class PlasmaFragment extends Fragment implements View.OnClickListener {
         donorList.addItemDecoration(new DividerItemDecorator(getActivity().getResources().getDrawable(R.drawable.gr_line_horizontal)));
         donorList.setHasFixedSize(true);
         donorList.setAdapter(adapter);
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                if (adapter.getItemCount()>0) {
+                    not_found.setVisibility(View.GONE);
+                    donorList.setVisibility(View.VISIBLE);
+                } else {
+                    donorList.setVisibility(View.GONE);
+                    not_found.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         mDatabase.child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
