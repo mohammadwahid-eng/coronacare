@@ -183,7 +183,7 @@ public class LoginWithMobileOTPActivity extends AppCompatActivity implements Vie
                     cUser.setId(currentUser.getUid());
                     cUser.setName("Your name");
                     cUser.setMobile(currentUser.getPhoneNumber());
-                    cUser.setPhoto("https://ui-avatars.com/api/?font-size=0.33&background=252427&color=fff&bold=true&size=200&name=Your+Name");
+                    cUser.setPhoto("https://ui-avatars.com/api/?font-size=0.33&background=325A51&color=fff&bold=true&size=200&name=Your+Name");
                     mDatabase.child("users").child(currentUser.getUid()).setValue(cUser);
                 }
 

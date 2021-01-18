@@ -135,6 +135,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 shimmerDoctor.stopShimmer();
                 shimmerDoctor.setVisibility(View.GONE);
                 doctors.clear();
+
                 int x = 0;
                 for (DataSnapshot snapshot : dataThanaSnapshot.getChildren()) {
                     User mUser = snapshot.getValue(User.class);
@@ -149,8 +150,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     }
                 }
 
-                if (x==0) {
-                    mDatabase.child("users").orderByChild("doctor/district").equalTo(district).addListenerForSingleValueEvent(new ValueEventListener() {
+                if (doctors.size()==0) {
+                    mDatabase.child("users").orderByChild("doctor/hdistrict").equalTo(district).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataDistrictSnapshot) {
                             doctors.clear();
@@ -159,7 +160,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 User mUser = snapshot.getValue(User.class);
                                 if (mUser!=null) {
                                     Doctor mDoctor = mUser.getDoctor();
-                                    if (mDoctor!=null && mDoctor.getHdistrict().equals(district) && !mUser.getId().equals(mAuth.getUid()) && mDoctor.isService()) {
+                                    if (mDoctor!=null && !mUser.getId().equals(mAuth.getUid()) && mDoctor.isService()) {
                                         if (y>10) break;
                                         doctors.add(mUser);
                                         adapter.notifyDataSetChanged();
